@@ -1,5 +1,7 @@
 # Minimal Project Start
 
+[![Build Status](https://travis-ci.com/katerberg/minimal-react.svg?branch=master)](https://travis-ci.com/katerberg/minimal-react)
+
 ## Fast Start
 
 ```
