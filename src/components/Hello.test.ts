@@ -1,6 +1,6 @@
-import { Hello } from './Hello';
 import { expect } from 'chai';
 import 'mocha';
+import { Hello } from './Hello';
 
 describe('Hello', () => {
     it('exists', () => {
