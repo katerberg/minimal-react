@@ -1,26 +1,24 @@
 import * as React from "react";
-import { SecondComponent } from "./SecondComponent";
+import { LoginPage } from "./LoginPage";
 
-export interface HelloProps { compiler: string; framework: string; }
-
-function handleClick() {
-        alert("OUCH!");
-    }
+function
 // 'HelloProps' describes the shape of props.
 // // State is never set so we use the '{}' type.
 
-export class Hello extends React.Component<HelloProps, {}> {
+export class Hello extends React.Component {
 
-
-
+  handleClick() {
+          alert("OUCH!");
+      }
 
   render() {
     return <div>
-      <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>
-    <SecondComponent numericalReference="second" exclamation="Yipee"/>
-    <SecondComponent numericalReference="third" exclamation="Wahoo"/>
-    <SecondComponent numericalReference="fourth" exclamation="Totally tubular"/>
-  <button onClick={()=> handleClick()}>Click me!</button>
+      <img src="https://www.slalom.com/sites/all/themes/slalom_bootstrap/images/slalom-logo-default@2x.png" /><h1>Freestyle Logo</h1>
+<button onClick={()=> handleClick()}>Login</button>
+<button onClick={()=> handleClick()}>Sign Up!</button>
+<hr />
+<LoginPage textValue="Log In"/>
+<LoginPage textValue="Sign Up"/>
 </div>;
   }
 }
