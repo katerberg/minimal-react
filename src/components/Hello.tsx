@@ -3,16 +3,13 @@ import { SecondComponent } from "./SecondComponent";
 
 export interface HelloProps { compiler: string; framework: string; }
 
-function handleClick() {
-        alert("OUCH!");
-    }
 // 'HelloProps' describes the shape of props.
-// // State is never set so we use the '{}' type.
-
+// State is never set so we use the '{}' type.
 export class Hello extends React.Component<HelloProps, {}> {
 
-
-
+handleClick() {
+        alert("OUCH!");
+    }
 
   render() {
     return <div>
@@ -20,7 +17,7 @@ export class Hello extends React.Component<HelloProps, {}> {
     <SecondComponent numericalReference="second" exclamation="Yipee"/>
     <SecondComponent numericalReference="third" exclamation="Wahoo"/>
     <SecondComponent numericalReference="fourth" exclamation="Totally tubular"/>
-  <button onClick={()=> handleClick()}>Click me!</button>
+  <button onClick={this.handleClick}>Click me!</button>
 </div>;
   }
 }
