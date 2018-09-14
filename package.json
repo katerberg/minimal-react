@@ -9,7 +9,7 @@
     "critter": "npm run tslint && npm test",
     "test": "mocha -r ts-node/register src/**/*.test.ts",
     "prettier": "prettier --write src/**/*",
-    "prettier:fix": "prettier src/**/* --write",
+    "prettier:fix": "npm run prettier -- --write",
     "tslint": "tslint -c tslint.json 'src/**/*.ts*'",
     "tslint:fix": "npm run tslint -- --fix"
   },
