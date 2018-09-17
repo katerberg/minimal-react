@@ -1,5 +1,6 @@
 import * as React from "react";
 import { SecondComponent } from "./SecondComponent";
+import { Button } from 'reactstrap';
 
 export interface HelloProps { compiler: string; framework: string; }
 
@@ -17,7 +18,7 @@ handleClick() {
     <SecondComponent numericalReference="second" exclamation="Yipee"/>
     <SecondComponent numericalReference="third" exclamation="Wahoo"/>
     <SecondComponent numericalReference="fourth" exclamation="Totally tubular"/>
-  <button onClick={this.handleClick}>Click me!</button>
+		<Button onClick={this.handleClick} color="danger">Click me!</Button>
 </div>;
   }
 }
