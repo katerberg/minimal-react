@@ -9,7 +9,7 @@
         "no-implicit-dependencies": [true, "dev"],
         "no-unused-expression": false,
         "no-console": {
-            "severity": "warning",
+            "severity": "error",
             "options": [
                 "debug",
                 "info",
