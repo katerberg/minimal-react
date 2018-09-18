@@ -2,6 +2,6 @@ language: "node_js"
 node_js:
   - "node"
 script:
-  - "npm run prettier"
-  - "npm run tslint"
+  - "npm run prettier:ci"
+  - "npm run tslint:ci"
   - "npm test"
