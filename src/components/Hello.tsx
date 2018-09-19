@@ -9,11 +9,11 @@ export interface IHelloProps {
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
 export class Hello extends React.Component<HelloProps, {}> {
-	handleClick() {
+	public handleClick() {
 		alert('OUCH!');
 	}
 
-	render() {
+	public render() {
 		return (
 			<div>
 				<h1>
