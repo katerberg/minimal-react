@@ -7,7 +7,10 @@ export interface ISecondComponentProps {
 
 // 'HelloProps' describes the shape of props.
 // // State is never set so we use the '{}' type.
-export class SecondComponent extends React.Component<ISecondComponentProps, {}> {
+export class SecondComponent extends React.Component<
+	ISecondComponentProps,
+	{}
+> {
 	public render() {
 		return (
 			<h2>
