@@ -1,11 +1,19 @@
-import * as React from "react";
+import * as React from 'react';
 
-export interface SecondComponentProps { numericalReference: string; exclamation: string; }
+export interface SecondComponentProps {
+	numericalReference: string;
+	exclamation: string;
+}
 
 // 'HelloProps' describes the shape of props.
 // // State is never set so we use the '{}' type.
-export class SecondComponent extends React.Component<SecondComponentProps, {}>  {
-  render() {
-    return <h2>This is my {this.props.numericalReference} component. {this.props.exclamation}!</h2>;
-  }
+export class SecondComponent extends React.Component<SecondComponentProps, {}> {
+	render() {
+		return (
+			<h2>
+				This is my {this.props.numericalReference} component.{' '}
+				{this.props.exclamation}!
+			</h2>
+		);
+	}
 }
