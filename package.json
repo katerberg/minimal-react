@@ -6,7 +6,6 @@
   "scripts": {
     "prestart": "cp ./node_modules/react/umd/react.development.js dist/react.development.js && cp ./node_modules/react-dom/umd/react-dom.development.js dist/react-dom.development.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "critter": "npm run tslint && npm run prettier && npm test",
     "prettier": "prettier 'src/**/*.{ts,tsx}'",
     "prettier:ci": "npm run prettier -- -l",
     "prettier:fix": "npm run prettier -- --write",
