@@ -2,11 +2,17 @@ import * as React from "react";
 import { SecondComponent } from "./SecondComponent";
 import { Button } from 'reactstrap';
 
-export interface HelloProps { compiler: string; framework: string; }
+export interface IHelloProps {
+	compiler: string;
+	framework: string;
+}
 
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
 export class Hello extends React.Component<HelloProps, {}> {
+	public handleClick() {
+		alert('OUCH!');
+	}
 
 handleClick() {
         alert("OUCH!");
