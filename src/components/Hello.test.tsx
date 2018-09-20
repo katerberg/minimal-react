@@ -8,10 +8,4 @@ describe('Hello', () => {
 
 		expect(hello.text()).toMatch(/^Hello from blah and foo!/);
 	});
-
-	test('Click me! exists', () => {
-		const hello = shallow(<Hello compiler="blah" framework="foo" />);
-
-		expect(hello.text()).toMatch(/Click me!$/);
-	});
 });

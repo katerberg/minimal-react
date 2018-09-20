@@ -1,8 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css'; //tslint:disable-line
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import './index.scss';
 
 import { Hello } from './components/Hello';
-import './index.scss';
 
 ReactDOM.render(
 	<Hello compiler="TypeScript" framework="React" />,

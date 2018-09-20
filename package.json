@@ -46,7 +46,10 @@
   "dependencies": {
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.7",
+    "@types/reactstrap": "^6.0.3",
+    "bootstrap": "^4.1.1",
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "reactstrap": "^6.4.0"
   }
 }

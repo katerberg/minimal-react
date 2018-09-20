@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Button } from 'reactstrap';
 import { SecondComponent } from './SecondComponent';
 
 export interface IHelloProps {
@@ -8,7 +9,7 @@ export interface IHelloProps {
 
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the '{}' type.
-export class Hello extends React.Component<HelloProps, {}> {
+export class Hello extends React.Component<IHelloProps, {}> {
 	public handleClick() {
 		alert('OUCH!');
 	}
@@ -25,7 +26,9 @@ export class Hello extends React.Component<HelloProps, {}> {
 					numericalReference="fourth"
 					exclamation="Totally tubular"
 				/>
-				<button onClick={this.handleClick}>Click me!</button>
+				<Button onClick={this.handleClick} color="danger">
+					Click me!
+				</Button>
 			</div>
 		);
 	}
