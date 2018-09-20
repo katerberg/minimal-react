@@ -1,6 +1,6 @@
-import * as React from "react";
-import { SecondComponent } from "./SecondComponent";
+import * as React from 'react';
 import { Button } from 'reactstrap';
+import { SecondComponent } from './SecondComponent';
 
 export interface IHelloProps {
 	compiler: string;
@@ -14,17 +14,26 @@ export class Hello extends React.Component<HelloProps, {}> {
 		alert('OUCH!');
 	}
 
-handleClick() {
-        alert("OUCH!");
-    }
+	public handleClick() {
+		alert('OUCH!');
+	}
 
-  render() {
-    return <div>
-      <h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>
-    <SecondComponent numericalReference="second" exclamation="Yipee"/>
-    <SecondComponent numericalReference="third" exclamation="Wahoo"/>
-    <SecondComponent numericalReference="fourth" exclamation="Totally tubular"/>
-		<Button onClick={this.handleClick} color="danger">Click me!</Button>
-</div>;
-  }
+	public render() {
+		return (
+			<div>
+				<h1>
+					Hello from {this.props.compiler} and {this.props.framework}!
+				</h1>
+				<SecondComponent numericalReference="second" exclamation="Yipee" />
+				<SecondComponent numericalReference="third" exclamation="Wahoo" />
+				<SecondComponent
+					numericalReference="fourth"
+					exclamation="Totally tubular"
+				/>
+				<Button onClick={this.handleClick} color="danger">
+					Click me!
+				</Button>
+			</div>
+		);
+	}
 }
