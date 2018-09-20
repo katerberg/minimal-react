@@ -6,6 +6,12 @@
   "scripts": {
     "prestart": "cp ./node_modules/react/umd/react.development.js dist/react.development.js && cp ./node_modules/react-dom/umd/react-dom.development.js dist/react-dom.development.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "prettier": "prettier 'src/**/*.{ts,tsx}'",
+    "prettier:ci": "npm run prettier -- -l",
+    "prettier:fix": "npm run prettier -- --write",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts*'",
+    "tslint:ci": "npm run tslint",
+    "tslint:fix": "npm run tslint -- --fix",
     "test": "jest",
     "test:watch": "npm test -- --watch"
   },
@@ -24,9 +30,14 @@
     "ts-jest": "^23.1.4",
     "css-loader": "^1.0.0",
     "node-sass": "^4.9.3",
+    "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.0.3",
     "url-loader": "^1.1.1",
     "webpack": "^4.17.2",
@@ -36,7 +47,10 @@
   "dependencies": {
     "@types/react": "^16.4.13",
     "@types/react-dom": "^16.0.7",
+    "@types/reactstrap": "^6.0.3",
+    "bootstrap": "^4.1.1",
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "reactstrap": "^6.4.0"
   }
 }
