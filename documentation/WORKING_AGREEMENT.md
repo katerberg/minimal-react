@@ -28,7 +28,7 @@
     - X-Large: Week
 ## Definition of Done:
 - Gone through manual QA
-- Reviewed by entire team
+- Reviewed by 50% of team
     - Look at code as a team
     - Passes Travis CI
     - Pass ACs
