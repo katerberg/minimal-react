@@ -1,5 +1,6 @@
 #!/bin/sh
 
+
 echo "making sure your home brew is up to date"
 brew update
 
@@ -11,7 +12,7 @@ brew install mongodb
 echo "#################################"
 echo "making the /data/db directory for local storage"
 
-mkdir -p /data/db
+sudo mkdir -p /data/db
 sudo chown -R `id -un` /data/db
 
 
