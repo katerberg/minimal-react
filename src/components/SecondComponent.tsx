@@ -11,7 +11,7 @@ export class SecondComponent extends React.Component<
 	ISecondComponentProps,
 	{}
 > {
-	public render() {
+	public render(): JSX.Element {
 		return (
 			<h2>
 				This is my {this.props.numericalReference} component.{' '}

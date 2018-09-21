@@ -33,7 +33,8 @@ module.exports = {
         use: [
           'url-loader'
         ]
-     }
+     },
+     {
 
       test: /\.css$/,
       loaders: ['style-loader', 'css-loader'],
