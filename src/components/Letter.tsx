@@ -6,14 +6,14 @@ export interface ILetterProps {
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
-	public render() {
+	public render(): JSX.Element {
 		return (
 			<div>
 				<h1>{this.props.letter}</h1>
 				<hr />
 				<ul>
-					{this.props.names.map(n => (
-						<li key={n}>{n}</li>
+					{this.props.names.map((name: string) => (
+						<li key={name}>{name}</li>
 					))}
 				</ul>
 			</div>
