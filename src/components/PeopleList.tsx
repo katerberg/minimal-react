@@ -1,42 +1,41 @@
 import * as React from 'react';
 import { Letter } from './Letter';
 export class PeopleList extends React.Component {
-
 	private letters: string[];
 	private names: string[];
 
-	constructor(props: Object) {
-			super(props);
+	constructor(props: object) {
+		super(props);
 
-			this.letters = [
-				'A',
-				'B',
-				'C',
-				'D',
-				'E',
-				'F',
-				'G',
-				'H',
-				'I',
-				'J',
-				'K',
-				'L',
-				'M',
-				'N',
-				'O',
-				'P',
-				'Q',
-				'R',
-				'S',
-				'T',
-				'U',
-				'V',
-				'W',
-				'X',
-				'Y',
-				'Z',
-			];
-			this.names = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
+		this.letters = [
+			'A',
+			'B',
+			'C',
+			'D',
+			'E',
+			'F',
+			'G',
+			'H',
+			'I',
+			'J',
+			'K',
+			'L',
+			'M',
+			'N',
+			'O',
+			'P',
+			'Q',
+			'R',
+			'S',
+			'T',
+			'U',
+			'V',
+			'W',
+			'X',
+			'Y',
+			'Z',
+		];
+		this.names = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
 	}
 
 	public filterNames(names: string[], letter: string) {
@@ -51,9 +50,7 @@ export class PeopleList extends React.Component {
 		return filteredNames.sort();
 	}
 
-
 	public render() {
-
 		return (
 			<div>
 				{this.letters.map(letter => (

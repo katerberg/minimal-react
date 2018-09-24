@@ -7,8 +7,8 @@ const logo = require('./logo.jpg'); //tslint:disable-line
 
 ReactDOM.render(
 	<div>
-		<PeopleList />
 		<img src={logo} />
+		<PeopleList />
 	</div>,
 	document.getElementById('app')
 );
