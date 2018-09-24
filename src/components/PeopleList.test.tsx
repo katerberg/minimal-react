@@ -59,7 +59,7 @@ describe('PeopleList', () => {
 	});
 
 	test('returns all letters in the Alphabet', () => {
-		const whatever = shallow(<PeopleList />);
-		expect(whatever.find(Letter)).to.have.lengthOf(26);
+		const peopleList = shallow(<PeopleList />);
+		expect(peopleList.find(Letter)).to.have.lengthOf(26);
 	});
 });
