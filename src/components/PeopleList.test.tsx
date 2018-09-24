@@ -1,8 +1,8 @@
+import { expect } from 'chai';
 import { shallow } from 'enzyme';
 import * as React from 'react';
-import { expect } from 'chai';
-import { PeopleList } from './PeopleList';
 import { Letter } from './Letter';
+import { PeopleList } from './PeopleList';
 
 describe('PeopleList', () => {
 	describe('filterNames()', () => {
@@ -58,9 +58,8 @@ describe('PeopleList', () => {
 		});
 	});
 
-
-	test ('returns all letters in the Alphabet', () => {
-		const whatever = shallow(<PeopleList/>);
+	test('returns all letters in the Alphabet', () => {
+		const whatever = shallow(<PeopleList />);
 		expect(whatever.find(Letter)).to.have.lengthOf(26);
-	})
+	});
 });

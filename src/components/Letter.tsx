@@ -10,7 +10,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 		return (
 			<div>
 				<h1>{this.props.letter}</h1>
-				<hr/>
+				<hr />
 				<ul>
 					{this.props.names.map(n => (
 						<li key={n}>{n}</li>
