@@ -6,6 +6,7 @@ export interface ILetterProps {
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
+
 	public render() {
 		return (
 			<div>

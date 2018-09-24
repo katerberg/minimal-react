@@ -9,7 +9,7 @@ describe('PeopleList', () => {
 		test('Filters names by letter test', () => {
 			const name: string[] = ['Cole', 'Jose'];
 			const letter: string = 'C';
-			const peopleList = new PeopleList(name, letter);
+			const peopleList = new PeopleList({});
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
@@ -20,7 +20,7 @@ describe('PeopleList', () => {
 		test('Alphabetizes names after filtering', () => {
 			const name: string[] = ['Cole', 'Jose', 'Jennifer'];
 			const letter: string = 'J';
-			const peopleList = new PeopleList(name, letter);
+			const peopleList = new PeopleList({});
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
@@ -30,7 +30,7 @@ describe('PeopleList', () => {
 		test('Handles Capitalization', () => {
 			const name: string[] = ['Cole', 'Jose', 'jennifer'];
 			const letter: string = 'J';
-			const peopleList = new PeopleList(name, letter);
+			const peopleList = new PeopleList({});
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
@@ -40,7 +40,7 @@ describe('PeopleList', () => {
 		test('Handles multiword first names', () => {
 			const name: string[] = ['Mary Ann', 'Mary', 'Matt'];
 			const letter: string = 'M';
-			const peopleList = new PeopleList(name, letter);
+			const peopleList = new PeopleList({});
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
@@ -50,7 +50,7 @@ describe('PeopleList', () => {
 		test('Handles missing names', () => {
 			const name: string[] = ['', null, 'Jose', 'Quarterly'];
 			const letter: string = 'Q';
-			const peopleList = new PeopleList(name, letter);
+			const peopleList = new PeopleList({});
 
 			const filteredNames = peopleList.filterNames(name, letter);
 

@@ -1,6 +1,44 @@
 import * as React from 'react';
 import { Letter } from './Letter';
 export class PeopleList extends React.Component {
+
+	private letters: string[];
+	private names: string[];
+
+	constructor(props: Object) {
+			super(props);
+
+			this.letters = [
+				'A',
+				'B',
+				'C',
+				'D',
+				'E',
+				'F',
+				'G',
+				'H',
+				'I',
+				'J',
+				'K',
+				'L',
+				'M',
+				'N',
+				'O',
+				'P',
+				'Q',
+				'R',
+				'S',
+				'T',
+				'U',
+				'V',
+				'W',
+				'X',
+				'Y',
+				'Z',
+			];
+			this.names = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
+	}
+
 	public filterNames(names: string[], letter: string) {
 		const nonEmptyNames: string[] = names.filter(name => name);
 		const capitalizedNames: string[] = nonEmptyNames.map(
@@ -13,44 +51,16 @@ export class PeopleList extends React.Component {
 		return filteredNames.sort();
 	}
 
+
 	public render() {
-		const letters: string[] = [
-			'A',
-			'B',
-			'C',
-			'D',
-			'E',
-			'F',
-			'G',
-			'H',
-			'I',
-			'J',
-			'K',
-			'L',
-			'M',
-			'N',
-			'O',
-			'P',
-			'Q',
-			'R',
-			'S',
-			'T',
-			'U',
-			'V',
-			'W',
-			'X',
-			'Y',
-			'Z',
-		];
-		const names: string[] = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
 
 		return (
 			<div>
-				{letters.map(letter => (
+				{this.letters.map(letter => (
 					<Letter
 						key={letter}
 						letter={letter}
-						names={this.filterNames(names, letter)}
+						names={this.filterNames(this.names, letter)}
 					/>
 				))}
 			</div>
