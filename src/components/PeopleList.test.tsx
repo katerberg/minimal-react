@@ -1,6 +1,8 @@
 import { shallow } from 'enzyme';
 import * as React from 'react';
+import { expect } from 'chai';
 import { PeopleList } from './PeopleList';
+import { Letter } from './Letter';
 
 describe('PeopleList', () => {
 	describe('filterNames()', () => {
@@ -11,8 +13,8 @@ describe('PeopleList', () => {
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
-			expect(filteredNames).toContain('Cole');
-			expect(filteredNames.length).toEqual(1);
+			expect(filteredNames).to.contain('Cole');
+			expect(filteredNames.length).to.eql(1);
 		});
 
 		test('Alphabetizes names after filtering', () => {
@@ -22,7 +24,7 @@ describe('PeopleList', () => {
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
-			expect(filteredNames).toEqual(['Jennifer', 'Jose']);
+			expect(filteredNames).to.eql(['Jennifer', 'Jose']);
 		});
 
 		test('Handles Capitalization', () => {
@@ -32,7 +34,7 @@ describe('PeopleList', () => {
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
-			expect(filteredNames).toEqual(['Jennifer', 'Jose']);
+			expect(filteredNames).to.eql(['Jennifer', 'Jose']);
 		});
 
 		test('Handles multiword first names', () => {
@@ -42,7 +44,7 @@ describe('PeopleList', () => {
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
-			expect(filteredNames).toEqual(['Mary', 'Mary Ann', 'Matt']);
+			expect(filteredNames).to.eql(['Mary', 'Mary Ann', 'Matt']);
 		});
 
 		test('Handles missing names', () => {
@@ -52,17 +54,13 @@ describe('PeopleList', () => {
 
 			const filteredNames = peopleList.filterNames(name, letter);
 
-			expect(filteredNames).toEqual(['Quarterly']);
+			expect(filteredNames).to.eql(['Quarterly']);
 		});
 	});
 
-	describe('parseNames()', () => {
-		test('Returns list of names from list of objects', () => {
-			const objects = {
-				Worker: 'Adam Derenbecher',
-				Phone: '+1 (314) 609-6484 (Mobile)',
-				'Email Address': 'adam.derenbecher@slalom.com (Adam Derenbecher)',
-			};
-		});
-	});
+
+	test ('returns all letters in the Alphabet', () => {
+		const whatever = shallow(<PeopleList/>);
+		expect(whatever.find(Letter)).to.have.lengthOf(26);
+	})
 });

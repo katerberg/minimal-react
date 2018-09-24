@@ -16,7 +16,7 @@ export class PeopleList extends React.Component {
 	public parseNames(people: Object[]) {}
 
 	public render() {
-		const letters: string[] = ['A', 'B', 'C', 'D', 'E', 'J', 'T'];
+		const letters: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 		const names: string[] = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
 
 		return (
