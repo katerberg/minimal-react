@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { PeopleList } from './components/PeopleList';
 import 'bootstrap/dist/css/bootstrap.min.css'; //tslint:disable-line
 import './index.scss';
-const logo = require('./logo.jpg'); //tslint:disable-line
+import * as logo from './logo.jpg';
 
 ReactDOM.render(
 	<div>
