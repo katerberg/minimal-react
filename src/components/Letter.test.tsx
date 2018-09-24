@@ -15,4 +15,8 @@ describe('Letter', () => {
 		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
 		expect(letter.contains(<ul></ul>)).to.equal(true);
 	})
+	test ('Displays line under each letter', () => {
+		const letter = shallow(<Letter letter='Q' names={[]}/>);
+		expect(letter.contains(<hr/>)).to.equal(true);
+	})
 });
