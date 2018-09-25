@@ -11,9 +11,9 @@ is_mongo_installed () {
 
 is_privileged () {
 if [ "$(id -u)" -ne 0 ]; then
-  echo "Sorry, you need to run $0 as root"
-  exit 1
+  return 1
 fi
+return 0
 }  
 
 install_mongo () {
@@ -33,7 +33,7 @@ fi
 
 is_privileged
 if [ $? -ne 0 ]; then
-  echo "please run $0 as sudo"
+  echo "$0 requires escalated priviliges to run"
   exit 1
 fi
 
