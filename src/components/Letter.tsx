@@ -6,16 +6,15 @@ export interface ILetterProps {
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
-
 	public render(): JSX.Element {
 		return (
 			<div>
 				<h1>{this.props.letter}</h1>
 				<hr />
-				<ul>
+				<ul style={{ listStyle: 'none' }}>
 					{this.props.names.map((name: string) => (
 						<li key={name}>
-							<ProfileModal names={name}/>
+							<ProfileModal names={name} />
 						</li>
 					))}
 				</ul>
