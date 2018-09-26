@@ -4,17 +4,28 @@ import { FieldForForm } from './FieldForForm';
 import axios from 'axios';
 
 
-export class GenericForm extends React.Component<{},{ errors: string[], values: any, email: string, password: string }> {
+export class GenericForm extends React.Component<{},{ error: string[], values: any, email: string, password: string, buttonDisable: boolean }> {
 	constructor(props: any) {
 		super(props);
 
 this.state = {
-			errors: [],
+			error: [],
 			email: '',
 			password: '',
-			values: undefined
+			values: undefined,
+			buttonDisable: true
 		};
 
+		this.submitForm = this.submitForm.bind(this);
+	}
+
+	handleChange = (value: string, key: string) => {
+		if (key === 'email'){
+			this.setState({ email: value});
+		}
+		else if (key === 'password'){
+			this.setState({ password: value});
+		}
 	}
 
 	public render(): JSX.Element {
@@ -27,14 +38,8 @@ this.state = {
 						<Input
 							id="email"
 							type="text"
-							onChange={
-								(e: React.FormEvent<HTMLInputElement>) => console.log('things') //tslint:disable-line
-								/* TODO: push change to form values */
-							} /* tslint:disable */
-							onBlur={
-								(e: React.FormEvent<HTMLInputElement>) => console.log('things')
-								/* TODO: validate field value */
-							}
+							onChange={(event) => this.handleChange(event.target.value, 'email')}
+							onBlur={(event) => this.validateForm()}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -43,23 +48,16 @@ this.state = {
 						<Input
 							id="password"
 							type="password"
-							onChange={
-								(e: React.FormEvent<HTMLInputElement>) => console.log('things') //tslint:disable-line
-								/* TODO: push change to form values */
-							} /* tslint:disable */
-							onBlur={
-								(e: React.FormEvent<HTMLInputElement>) => console.log('things')
-								/* TODO: validate field value */
-							}
+							onChange={(event) => this.handleChange(event.target.value, 'password')}
+							onBlur={(event) => this.validateForm()}
 							className="form-control"
 						/>
-						{console.log('things') /* TODO - display validation error */}
 					</FormGroup>
 					<div className="form-group">
 						<Button
 							type="submit"
 							className="btn btn-primary"
-							disabled={this.haveErrors(this.state.errors)}
+							disabled={this.state.buttonDisable}
 						>
 							Submit
 						</Button>
@@ -73,42 +71,38 @@ this.state = {
 	 * Returns whether there are any errors in the errors object that is passed in
 	 * @param {IErrors} errors - The field errors
 	 */
-	private haveErrors(errors: string[]) {
+	private haveErrors(error: string) {
 		//tslint:disable-line
 		let haveError: boolean = false;
-		if (errors.length > 0) {
+		if (error.length > 0) {
 			haveError = true;
 		}
 		return haveError;
 	}
-	/* tslint:disable */
-	/**
-	 * Handles form submission
-	 * @param {React.FormEvent<HTMLFormElement>} e //tslint:disable-line
-	 * private handleSubmit = async (
-	 * e: React.FormEvent<HTMLFormElement>
-	 * ): Promise<void> => {
-	 *  e.preventDefault();
-	 *
-	 * if (this.validateForm()) {
-	 * const submitSuccess: boolean = await this.submitForm();
-	 *    this.setState({ submitSuccess });
-	 *  }
-	 * };
-	 */
+
 
 	/**
 	 * Executes the validation rules for all the fields on the form and sets the error state
 	 * @returns {boolean} - Whether the form is valid or not
 	 */
-	private validateForm(): string[] {
-		// TODO - validate form
-		return [];
+	private validateForm(): boolean {
+		let errors : boolean = false;
+		let errorMessages : string[] = [];
+		if (!(this.state.email.length > 0)) {
+			errorMessages.push("Email must be populated.");
+		}
+		if (!(this.state.password.length > 5)) {
+			errorMessages.push("Password must be longer than 5 characters.");
+		}
+		if (errorMessages.length > 0){
+			errors = true;
+		}
+		this.setState({buttonDisable: errors});
+		return errors;
 	}
 
 	private submitForm(): boolean {
-		// TODO - validate form
-		const validationErrors: string[] = this.validateForm();
+		// const validationErrors: string[] = this.validateForm();
 
 		const user = {
 	email: this.state.email,
@@ -121,17 +115,6 @@ this.state = {
         console.log(res.data);
       })
 
-
-
 		return true;
 	}
-
-	/**
-	 * Submits the form to the http api
-	 * @returns {boolean} - Whether the form submission was successful or not
-	 */
-	// private async submitForm(): Promise<boolean> {
-	// 	// TODO - submit the form
-	// 	return true;
-	// }
 }
