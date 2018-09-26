@@ -11,7 +11,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 			<div>
 				<h1>{this.props.letter}</h1>
 				<hr />
-				<ul style={{ listStyle: 'none' }}>
+				<ul>
 					{this.props.names.map((name: string) => (
 						<li key={name}>
 							<ProfileModal names={name} />
