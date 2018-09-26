@@ -1,28 +1,20 @@
 import * as React from 'react';
-import { Button, Form } from 'reactstrap';
+import { Button, Form, InputProps, Input, FormGroup, Label } from 'reactstrap';
 import { FieldForForm } from './FieldForForm';
+import axios from 'axios';
 
-export interface IGenericFormState {
-	/* The field values */
-	values: any; //tslint:disable-line
 
-	/* The field validation error messages */
-	errors: string[];
-
-	/* Whether the form has been successfully submitted */
-	submitSuccess?: boolean;
-}
-
-export class GenericForm extends React.Component<IGenericFormState> {
-	constructor(props: IGenericFormState) {
+export class GenericForm extends React.Component<{},{ errors: string[], values: any, email: string, password: string }> {
+	constructor(props: any) {
 		super(props);
 
-		const errors: string[] = this.props.errors;
-		const values: any = this.props.values; //tslint:disable-line
-		this.state = {
-			errors,
-			values,
+this.state = {
+			errors: [],
+			email: '',
+			password: '',
+			values: undefined
 		};
+
 	}
 
 	public render(): JSX.Element {
@@ -30,32 +22,48 @@ export class GenericForm extends React.Component<IGenericFormState> {
 			<Form onSubmit={this.submitForm} noValidate={true}>
 				<div className="container">
 					{/* TODO - render fields */}
-					<FieldForForm id="name" label="Login Name" fieldType="text" />
-					<FieldForForm id="password" label="Login Password" fieldType="text" />
+					<FormGroup>
+						<Label>Email: </Label>
+						<Input
+							id="email"
+							type="text"
+							onChange={
+								(e: React.FormEvent<HTMLInputElement>) => console.log('things') //tslint:disable-line
+								/* TODO: push change to form values */
+							} /* tslint:disable */
+							onBlur={
+								(e: React.FormEvent<HTMLInputElement>) => console.log('things')
+								/* TODO: validate field value */
+							}
+							className="form-control"
+						/>
+					</FormGroup>
+					<FormGroup>
+						<Label>Password: </Label>
+						<Input
+							id="password"
+							type="password"
+							onChange={
+								(e: React.FormEvent<HTMLInputElement>) => console.log('things') //tslint:disable-line
+								/* TODO: push change to form values */
+							} /* tslint:disable */
+							onBlur={
+								(e: React.FormEvent<HTMLInputElement>) => console.log('things')
+								/* TODO: validate field value */
+							}
+							className="form-control"
+						/>
+						{console.log('things') /* TODO - display validation error */}
+					</FormGroup>
 					<div className="form-group">
 						<Button
 							type="submit"
 							className="btn btn-primary"
-							disabled={this.haveErrors(this.props.errors)}
+							disabled={this.haveErrors(this.state.errors)}
 						>
 							Submit
 						</Button>
 					</div>
-					{this.props.submitSuccess && (
-						<div className="alert alert-info" role="alert" />
-					)}
-					{this.props.submitSuccess === false &&
-						!this.haveErrors(this.props.errors) && (
-							<div className="alert alert-danger" role="alert">
-								Incorrect user name or password.
-							</div>
-						)}
-					{this.props.submitSuccess === false &&
-						this.haveErrors(this.props.errors) && (
-							<div className="alert alert-danger" role="alert">
-								Incorrect user name or password.
-							</div>
-						)}
 				</div>
 			</Form>
 		);
@@ -101,6 +109,20 @@ export class GenericForm extends React.Component<IGenericFormState> {
 	private submitForm(): boolean {
 		// TODO - validate form
 		const validationErrors: string[] = this.validateForm();
+
+		const user = {
+	email: this.state.email,
+	password: this.state.password
+};
+
+		axios.post(`https://localhost:8080/login`, { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+
+
+
 		return true;
 	}
 

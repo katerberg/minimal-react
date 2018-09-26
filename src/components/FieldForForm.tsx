@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FormGroup, Input, Label } from 'reactstrap';
+import { FormGroup, Input, Label, InputProps } from 'reactstrap';
 
 export interface IFieldProps {
 	/* The unique field name */
@@ -9,7 +9,7 @@ export interface IFieldProps {
 	label?: string;
 
 	/* The type of field we want to use */
-	fieldType: string;
+	fieldType: InputProps["type"];
 }
 
 export class FieldForForm extends React.Component<IFieldProps, {}> {
@@ -24,7 +24,7 @@ export class FieldForForm extends React.Component<IFieldProps, {}> {
 					</Label>
 					<Input
 						id={this.props.id}
-						fieldType={this.props.fieldType}
+						type={this.props.fieldType}
 						onChange={
 							(e: React.FormEvent<HTMLInputElement>) => console.log('things') //tslint:disable-line
 							/* TODO: push change to form values */
