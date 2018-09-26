@@ -28,13 +28,12 @@ export class ProfileModal extends React.Component<
 	public render(): JSX.Element {
 		return (
 			<div>
-				<Button color="danger" onClick={this.toggle}>
+				<Button color="danger" onClick={() => this.toggle()}>
 					{this.props.names}
 				</Button>
 				<Modal isOpen={this.state.modal} toggle={this.toggle}>
 					<ModalHeader toggle={this.toggle}>
-						{this.props.names}
-						's Profile
+						{this.props.names + "'s Profile"}
 					</ModalHeader>
 					<ModalBody style={{ textAlign: 'center' }}>
 						<div className="moduleBody">
