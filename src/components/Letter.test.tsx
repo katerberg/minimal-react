@@ -6,9 +6,7 @@ import { PeopleList } from './PeopleList';
 
 describe('Letter', () => {
 	test('Shows letters larger than names', () => {
-		const letter: ShallowWrapper = shallow(
-			<Letter letter="Q" names={['Quincy']} />
-		);
+		const letter: ShallowWrapper = shallow(<Letter letter="Q" names={['Quincy']} />);
 		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
 		expect(letter.contains(<li key="Quincy">Quincy</li>)).to.equal(true);
 	});
