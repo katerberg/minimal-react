@@ -7,7 +7,7 @@ export class LoginForm extends React.Component<{},{ errorMessages: string[], ema
 	constructor(props: any) {
 		super(props);
 
-this.state = {
+		this.state = {
 			errorMessages: [],
 			email: '',
 			password: '',
@@ -15,9 +15,12 @@ this.state = {
 		};
 
 		this.submitForm = this.submitForm.bind(this);
+		this.validateForm = this.validateForm.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+
 	}
 
-	handleChange = (value: string, key: string) => {
+	private handleChange(value: string, key: string) : void {
 		if (key === 'email'){
 			this.setState({ email: value});
 		}
@@ -68,11 +71,6 @@ this.state = {
 		);
 	}
 
-
-	/**
-	 * Executes the validation rules for all the fields on the form and sets the error state
-	 * @returns {boolean} - Whether the form is valid or not
-	 */
 	private validateForm( formState : any ): boolean {
 		this.setState({ errorMessages: [] });
 
@@ -90,20 +88,18 @@ this.state = {
 		}
 
 		this.setState({ errorMessages: errorMessages });
-		this.setState({buttonDisable: errors});
+		this.setState({ buttonDisable: errors });
 
 		return errors;
 	}
-
-
 
 	private submitForm(): boolean {
 		// const validationErrors: string[] = this.validateForm();
 
 		const user = {
-	email: this.state.email,
-	password: this.state.password
-};
+			email: this.state.email,
+			password: this.state.password
+		};
 
 		axios.post(`https://localhost:8080/login`, { user })
       .then(res => {
