@@ -1,6 +1,7 @@
 #!/bin/sh
 # functions
 
+
 is_mongo_installed () {
   command -v mongod > /dev/null
   if [ $? -eq 0 ]; then
@@ -47,7 +48,7 @@ fi
 
 is_sudo
 if [ $? -ne 0 ]; then
-  echo "$0 requires escalated priviliges to run"
+  echo "$0 requires 'sudo' to run this script"
   exit 1
 fi
 
