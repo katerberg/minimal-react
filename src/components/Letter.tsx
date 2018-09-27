@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import { ProfileModal } from './ProfileModal';
 export interface ILetterProps {
 	letter: string;
 	names: string[];
@@ -13,7 +13,9 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<hr />
 				<ul>
 					{this.props.names.map((name: string) => (
-						<li key={name}>{name}</li>
+						<li key={name}>
+							<ProfileModal name={name} />
+						</li>
 					))}
 				</ul>
 			</div>
