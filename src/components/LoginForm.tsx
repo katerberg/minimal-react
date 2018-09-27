@@ -37,7 +37,7 @@ this.state = {
 							id="email"
 							type="email"
 							onChange={(event) => this.handleChange(event.target.value, 'email')}
-							onBlur={(event) => this.validateForm()}
+							onBlur={(event) => this.validateForm(this.state)}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -47,7 +47,7 @@ this.state = {
 							id="password"
 							type="password"
 							onChange={(event) => this.handleChange(event.target.value, 'password')}
-							onBlur={(event) => this.validateForm()}
+							onBlur={(event) => this.validateForm(this.state)}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -73,16 +73,16 @@ this.state = {
 	 * Executes the validation rules for all the fields on the form and sets the error state
 	 * @returns {boolean} - Whether the form is valid or not
 	 */
-	private validateForm(): boolean {
+	private validateForm( formState : any ): boolean {
 		this.setState({ errorMessages: [] });
 
 		let errors : boolean = false;
 		let errorMessages : string[] = [];
 
-		if (!(this.state.email.length > 4)) {
+		if (!(formState.email.length > 4)) {
 			errorMessages.push("Email must be populated.");
 		}
-		if (!(this.state.password.length > 5)) {
+		if (!(formState.password.length > 5)) {
 			errorMessages.push("Password must be longer than 5 characters.");
 		}
 		if (errorMessages.length > 0){
