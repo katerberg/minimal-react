@@ -7,7 +7,7 @@ import { ProfileModal } from './ProfileModal';
 describe('<ProfileModal>', () => {
 	it('renders <Modal>', () => {
 		const wrapper: ShallowWrapper = shallow(<ProfileModal names={''} />);
-		expect(wrapper.find(Modal).length).to.equal(1);
+		expect(wrapper.find(Modal).length).to.eql(1);
 	});
 
 	it('opens modal when button is clicked', () => {
