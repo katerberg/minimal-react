@@ -14,7 +14,7 @@ describe('Letter', () => {
 		expect(
 			letter.contains(
 				<li key="Quincy">
-					<ProfileModal names={'Quincy'} />
+					<ProfileModal name={'Quincy'} />
 				</li>
 			)
 		).to.equal(true);

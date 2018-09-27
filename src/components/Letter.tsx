@@ -14,7 +14,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<ul>
 					{this.props.names.map((name: string) => (
 						<li key={name}>
-							<ProfileModal names={name} />
+							<ProfileModal name={name} />
 						</li>
 					))}
 				</ul>
