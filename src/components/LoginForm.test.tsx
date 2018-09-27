@@ -7,10 +7,14 @@ describe('LoginForm tests', () => {
 	describe('validateForm()', () => {
 		test('returns true if there are errors', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
-			console.log(loginForm)
-			loginForm.instance().setState({ errorMessages: ['hello'] });
-			console.log(Object.keys(loginForm.instance()))
-			// expect(loginForm.instance().validateForm({ errorMessages: ["Error1", "Error2"]})).to.eql(true);
+			const loginFormInstance : any = loginForm.instance();
+			console.log(loginFormInstance instanceof LoginForm);
+			const inputState = { email: '', password: '', errorMessages: ['Error1','Error2'] };
+			spyOn(loginFormInstance, 'validateForm').and.callThrough();
+
+			const result : boolean = loginFormInstance.validateForm(inputState);
+
+			expect(result).to.eql(true);
 		});
 	});
 });
