@@ -32,7 +32,11 @@ export class ProfileModal extends React.Component<
 				<Button color="danger" onClick={this.toggle}>
 					{this.props.names}
 				</Button>
-				<Modal isOpen={this.state.modal} toggle={this.toggle} className="profile-modal">
+				<Modal
+					isOpen={this.state.modal}
+					toggle={this.toggle}
+					className="profile-modal"
+				>
 					<ModalHeader toggle={this.toggle}>
 						{this.props.names + "'s Profile"}
 					</ModalHeader>
