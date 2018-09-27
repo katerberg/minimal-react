@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { Button, Form, InputProps, Input, FormGroup, Label } from 'reactstrap';
+import { Button, Form, Input, FormGroup, Label } from 'reactstrap';
 import { FieldForForm } from './FieldForForm';
 import axios from 'axios';
 
 
-export class GenericForm extends React.Component<{},{ error: string[], values: any, email: string, password: string, buttonDisable: boolean }> {
+export class GenericForm extends React.Component<{},{ errorMessages: string[], email: string, password: string, buttonDisable: boolean }> {
 	constructor(props: any) {
 		super(props);
 
 this.state = {
-			error: [],
+			errorMessages: [],
 			email: '',
 			password: '',
-			values: undefined,
 			buttonDisable: true
 		};
 
@@ -61,23 +60,13 @@ this.state = {
 						>
 							Submit
 						</Button>
+						{ this.state.errorMessages.map((errorMessage: string) => (
+								<p key={errorMessage}>{errorMessage}</p>
+						))}
 					</div>
 				</div>
 			</Form>
 		);
-	}
-
-	/**
-	 * Returns whether there are any errors in the errors object that is passed in
-	 * @param {IErrors} errors - The field errors
-	 */
-	private haveErrors(error: string) {
-		//tslint:disable-line
-		let haveError: boolean = false;
-		if (error.length > 0) {
-			haveError = true;
-		}
-		return haveError;
 	}
 
 
@@ -86,9 +75,12 @@ this.state = {
 	 * @returns {boolean} - Whether the form is valid or not
 	 */
 	private validateForm(): boolean {
+		this.setState({ errorMessages: [] });
+
 		let errors : boolean = false;
 		let errorMessages : string[] = [];
-		if (!(this.state.email.length > 0)) {
+
+		if (!(this.state.email.length > 4)) {
 			errorMessages.push("Email must be populated.");
 		}
 		if (!(this.state.password.length > 5)) {
@@ -97,9 +89,14 @@ this.state = {
 		if (errorMessages.length > 0){
 			errors = true;
 		}
+
+		this.setState({ errorMessages: errorMessages });
 		this.setState({buttonDisable: errors});
+
 		return errors;
 	}
+
+
 
 	private submitForm(): boolean {
 		// const validationErrors: string[] = this.validateForm();

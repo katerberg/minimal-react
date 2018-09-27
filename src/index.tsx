@@ -7,7 +7,9 @@ import * as logo from './logo.jpg';
 
 ReactDOM.render(
 	<div>
-		<img src={logo} />
+		<div className="text-center">
+			<img src={logo} />
+		</div>
 		<LoginForm />
 	</div>,
 	document.getElementById('app')
