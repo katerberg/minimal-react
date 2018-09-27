@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { Letter } from './Letter';
+import './ProfileModal.scss';
 
 export interface IProfileProps {
 	names: string;
@@ -31,12 +32,12 @@ export class ProfileModal extends React.Component<
 				<Button color="danger" onClick={this.toggle}>
 					{this.props.names}
 				</Button>
-				<Modal isOpen={this.state.modal} toggle={this.toggle}>
+				<Modal isOpen={this.state.modal} toggle={this.toggle} className="profile-modal">
 					<ModalHeader toggle={this.toggle}>
 						{this.props.names + "'s Profile"}
 					</ModalHeader>
-					<ModalBody style={{ textAlign: 'center' }}>
-						<div className="moduleBody">
+					<ModalBody>
+						<div className="modal-body">
 							<span>
 								<img
 									src="https://placeimg.com/150/150/animals"
