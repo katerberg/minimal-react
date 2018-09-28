@@ -55,9 +55,12 @@ describe('LoginForm tests', () => {
 	});
 
 	describe('render()', () => {
-		test('Displays two input form fields', () => {
+		test('Displays two form inputs: one email and one password', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+
 			expect(loginForm.find(Input)).to.have.lengthOf(2);
+			expect(loginForm.find('#password')).to.have.lengthOf(1);
+			expect(loginForm.find('#email')).to.have.lengthOf(1);
 		});
 	});
 });
