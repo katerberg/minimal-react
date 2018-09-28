@@ -2,8 +2,14 @@ import * as React from 'react';
 import { Button, Form, Input, FormGroup, Label } from 'reactstrap';
 import axios from 'axios';
 
+export interface LoginFormState {
+	errorMessages: string[],
+	email: string,
+	password: string,
+	buttonDisable: boolean
+}
 
-export class LoginForm extends React.Component<{},{ errorMessages: string[], email: string, password: string, buttonDisable: boolean }> {
+export class LoginForm extends React.Component<{},LoginFormState> {
 	constructor(props: any) {
 		super(props);
 
@@ -71,7 +77,7 @@ export class LoginForm extends React.Component<{},{ errorMessages: string[], ema
 		);
 	}
 
-	private validateForm( formState : any ): boolean {
+	private validateForm( formState : LoginFormState ): boolean {
 		this.setState({ errorMessages: [] });
 
 		let errors : boolean = false;
