@@ -33,4 +33,23 @@ describe('LoginForm tests', () => {
 			expect(loginForm.contains('Error3')).to.equal(false);
 		});
 	});
+
+	describe('handleChange()', () => {
+		test('Sets email in state when user inputs email in form', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+			loginForm.find('#email').simulate('change', {target:
+				{name: 'email', value: 'billy@email.com'}
+			})
+
+			expect(loginForm.state('email')).to.eql('billy@email.com');
+		});
+		test('Sets password in state when user inputs password in form', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+			loginForm.find('#password').simulate('change', {target:
+				{name: 'password', value: 'fakepass'}
+			})
+
+			expect(loginForm.state('password')).to.eql('fakepass');
+		})
+	});
 });
