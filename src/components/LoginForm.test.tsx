@@ -19,10 +19,18 @@ describe('LoginForm tests', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 			const loginFormInstance : any = loginForm.instance();
 			loginFormInstance.setState({ email: 'billy@email.com', password: 'fakepass' });
-			
+
 			loginFormInstance.validateForm(loginFormInstance.state);
 
 			expect(loginFormInstance.state.buttonDisable).to.eql(false);
+		});
+		test('Displays error messages from state', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+
+			loginForm.setState({ errorMessages: ['Error1','Error2'] });
+
+			expect(loginForm.contains('Error1')).to.equal(true);
+			expect(loginForm.contains('Error3')).to.equal(false);
 		});
 	});
 });
