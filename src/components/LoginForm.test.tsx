@@ -2,6 +2,7 @@ import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { LoginForm } from './LoginForm';
+import { Input } from 'reactstrap';
 
 describe('LoginForm tests', () => {
 	describe('validateForm()', () => {
@@ -50,6 +51,13 @@ describe('LoginForm tests', () => {
 			})
 
 			expect(loginForm.state('password')).to.eql('fakepass');
-		})
+		});
+	});
+
+	describe('render()', () => {
+		test('Displays two input form fields', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+			expect(loginForm.find(Input)).to.have.lengthOf(2);
+		});
 	});
 });
