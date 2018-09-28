@@ -84,7 +84,7 @@ export class LoginForm extends React.Component<{},LoginFormState> {
 		let errorMessages : string[] = [];
 
 		if (!(formState.email.length > 4)) {
-			errorMessages.push("Email must be populated.");
+			errorMessages.push("Email must be longer than 4 characters.");
 		}
 		if (!(formState.password.length > 5)) {
 			errorMessages.push("Password must be longer than 5 characters.");
