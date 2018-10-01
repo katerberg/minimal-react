@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ProfileModal } from './ProfileModal';
 import { Employee } from './PeopleList';
+import { ProfileModal } from './ProfileModal';
 
 export interface ILetterProps {
 	letter: string;
