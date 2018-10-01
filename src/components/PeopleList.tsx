@@ -1,11 +1,20 @@
 import * as React from 'react';
 import { Letter } from './Letter';
+import axios, { AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios';
+
 export class PeopleList extends React.Component {
 	private letters: string[];
 	private names: string[];
 
 	constructor(props: object) {
 		super(props);
+
+		axios.get(`http://localhost:3000/api/database/employees`)
+    .then((res: AxiosResponse) => {
+			console.log('responded?')
+      const users = res.data;
+      this.names = users;
+    })
 
 		this.letters = [
 			'A',
