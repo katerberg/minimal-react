@@ -8,13 +8,6 @@ is_mongo_installed () {
     return 0
   fi
   return 1
-}
-
-is_sudo () {
-  if [ "$(id -u)" -ne 0 ]; then
-    return 1
-  fi
-  return 0
 }  
 
 is_brew_installed () {
@@ -28,8 +21,8 @@ is_brew_installed () {
 install_mongo () {
   brew update
   brew install mongodb
-  mkdir -p /data/db
-  chown -R `id -un` /data/db 
+  sudo mkdir -p /data/db
+  sudo chown -R `id -un` /data/db 
 }
 
 # running code
@@ -41,17 +34,10 @@ if [ $? -eq 0 ]; then
 fi
 
 is_brew_installed
-if [ $? -ne 0 ]
+if [ $? -ne 0 ]; then
   echo "you need to install brew before you can continue!"
   exit 1
 fi
-
-is_sudo
-if [ $? -ne 0 ]; then
-  echo "$0 requires 'sudo' to run this script"
-  exit 1
-fi
-
 
 install_mongo
 is_mongo_installed
