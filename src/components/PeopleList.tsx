@@ -66,27 +66,23 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 		});
 		const filteredNames: Employee[] = capitalizedNames.filter((employee: Employee) => employee.name[0] === letter);
 
-		return filteredNames;
-		// return filteredNames.sort(function(a: Employee, b: Employee) {
-		//   var nameA = a.name;
-		//   var nameB = b.name;
-		//   if (nameA < nameB) {
-		//     return -1;
-		//   }
-		//   if (nameA > nameB) {
-		//     return 1;
-		//   }
-		//
-		//   // names must be equal
-		//   return 0;
-		// });
+		return filteredNames.sort(function(a: Employee, b: Employee) {
+		  if (a.name < b.name) {
+		    return -1;
+		  }
+		  if (a.name > b.name) {
+		    return 1;
+		  }
+		  // names must be equal
+		  // return 0;
+		});
 	}
 
 	public render(): JSX.Element {
 			return (
 				<div>
 					{this.letters.map((letter: string) => (
-						<Letter key={letter} letter={letter} employees={!this.state ? [] : this.filterNames(this.state.employees, letter)} />
+						<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
 					))}
 				</div>
 			);

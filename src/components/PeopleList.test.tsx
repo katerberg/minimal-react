@@ -31,19 +31,18 @@ describe('PeopleList', () => {
 			expect(filteredNames.length).to.eql(1);
 		});
 
-		// 		test('Alphabetizes names after filtering', () => {
-		// // 			const employee2:Employee = {"_id":"5bad03ddcf3fa4426a048ce7","name":"Adrienne Costello","phone":"","email":"adrienne.costello@slalom.com (Adrienne Costello)"};
-		// // const employee1:Employee = {"_id":"5bad03ddcf3fa4426a048ce6","name":"Adam Etchason","phone":"","email":"adam.etchason@slalom.com (Adam Etchason)"};
-		// const name: Employee[] = [{"_id":"5bad03ddcf3fa4426a048ce7","name":"Adrienne Costello","phone":"","email":"adrienne.costello@slalom.com (Adrienne Costello)"}, {"_id":"5bad03ddcf3fa4426a048ce6","name":"Adam Etchason","phone":"","email":"adam.etchason@slalom.com (Adam Etchason)"}];
-		//
-		// 			// const name: Employee[] = [employee2,employee1];
-		// 			const letter: string = 'A';
-		// 			const peopleList: PeopleList = new PeopleList({});
-		//
-		// 			const filteredNames: Employee[] = peopleList.filterNames(name, letter);
-		//
-		// 			expect(filteredNames).to.eql([{"_id":"5bad03ddcf3fa4426a048ce6","name":"Adam Etchason","phone":"","email":"adam.etchason@slalom.com (Adam Etchason)"},{"_id":"5bad03ddcf3fa4426a048ce7","name":"Adrienne Costello","phone":"","email":"adrienne.costello@slalom.com (Adrienne Costello)"}]);
-		// 		});
+				test('Alphabetizes names after filtering', () => {
+					const adrienne:Employee = {"_id":"5bad03ddcf3fa4426a048ce7","name":"Adrienne Costello","phone":"","email":"adrienne.costello@slalom.com (Adrienne Costello)"};
+		const adam:Employee = {"_id":"5bad03ddcf3fa4426a048ce6","name":"Adam Etchason","phone":"","email":"adam.etchason@slalom.com (Adam Etchason)"};
+		const employees: Employee[] = [adrienne, adam];
+
+					// const name: Employee[] = [employee2,employee1];
+					const letter: string = 'A';
+					const peopleList: PeopleList = new PeopleList({});
+
+					const filteredNames: Employee[] = peopleList.filterNames(employees, letter);
+					expect(filteredNames).to.eql([adam, adrienne]);
+				});
 
 		test('Handles Capitalization', () => {
 			const name: Employee[] = [
