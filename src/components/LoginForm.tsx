@@ -3,7 +3,8 @@ import { Button, Form, Input, FormGroup, Label } from 'reactstrap';
 import axios from 'axios';
 
 export interface LoginFormState {
-	errorMessages: string[],
+	emailErrors: string[],
+	passwordErrors: string[],
 	email: string,
 	password: string,
 	buttonDisable: boolean
@@ -14,14 +15,16 @@ export class LoginForm extends React.Component<{},LoginFormState> {
 		super(props);
 
 		this.state = {
-			errorMessages: [],
+			emailErrors: [],
+			passwordErrors: [],
 			email: '',
 			password: '',
 			buttonDisable: true
 		};
 
 		this.submitForm = this.submitForm.bind(this);
-		this.validateForm = this.validateForm.bind(this);
+		this.validateEmail = this.validateEmail.bind(this);
+		this.validatePassword = this.validatePassword.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 
 	}
@@ -37,7 +40,7 @@ export class LoginForm extends React.Component<{},LoginFormState> {
 
 	public render(): JSX.Element {
 		return (
-			<Form onSubmit={this.submitForm} noValidate={true}>
+			<Form onSubmit={this.submitForm} noValidate={false}>
 				<div className="container">
 					{/* TODO - render fields */}
 					<FormGroup>
@@ -45,8 +48,9 @@ export class LoginForm extends React.Component<{},LoginFormState> {
 						<Input
 							id="email"
 							type="email"
-							onChange={(event) => this.handleChange(event.target.value, 'email')}
-							onBlur={(event) => this.validateForm(this.state)}
+							onChange={(event) => {
+								this.handleChange(event.target.value, 'email')}}
+							onBlur={(event) => this.validateEmail(this.state)}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -55,49 +59,98 @@ export class LoginForm extends React.Component<{},LoginFormState> {
 						<Input
 							id="password"
 							type="password"
-							onChange={(event) => this.handleChange(event.target.value, 'password')}
-							onBlur={(event) => this.validateForm(this.state)}
+							onFocus={(event) => this.handleChange(event.target.value, 'password')}
+							onChange={(event) => {
+								this.handleChange(event.target.value, 'password');
+								this.validatePassword(this.state);
+							}}
 							className="form-control"
 						/>
 					</FormGroup>
 					<div className="form-group">
 						<Button
 							type="submit"
-							className="btn btn-primary"
+							className="btn btn-success"
 							disabled={this.state.buttonDisable}
 						>
 							Submit
 						</Button>
-						{ this.state.errorMessages.map((errorMessage: string) => (
-								<p key={errorMessage}>{errorMessage}</p>
+						{ this.state.emailErrors.map((emErr: string) => (
+								<p key={emErr}>{emErr}</p>
 						))}
+						{
+						this.state.passwordErrors.map((pwErr: string) => (
+								<p key={pwErr}>{pwErr}</p>
+						))}
+
 					</div>
 				</div>
 			</Form>
 		);
 	}
 
-	private validateForm( formState : LoginFormState ): boolean {
-		this.setState({ errorMessages: [] });
+	// private validateForm( formState : LoginFormState ): boolean {
+	// 	this.setState({ errorMessages: [] });
+	//
+	// 	let errors : boolean = false;
+	// 	let errorMessages : string[] = [];
+	//
+	// 	if (!(formState.email.length > 4)) {
+	// 		errorMessages.push("Email must be longer than 4 characters.");
+	// 	}
+	// 	if (!(formState.password.length > 3)) {
+	// 		errorMessages.push("Password must be longer than 5 characters.");
+	// 	}
+	// 	if (errorMessages.length > 0){
+	// 		errors = true;
+	// 	}
+	//
+	// 	this.setState({ errorMessages: errorMessages });
+	// 	this.setState({ buttonDisable: errors });
+	//
+	// 	return errors;
+	// }
+
+	private validateEmail( formState : LoginFormState ): void {
+		this.setState({ emailErrors: [] });
 
 		let errors : boolean = false;
-		let errorMessages : string[] = [];
+		let emailErrors : string[] = [];
 
 		if (!(formState.email.length > 4)) {
-			errorMessages.push("Email must be longer than 4 characters.");
+			emailErrors.push("Email must be longer than 4 characters.");
 		}
-		if (!(formState.password.length > 5)) {
-			errorMessages.push("Password must be longer than 5 characters.");
-		}
-		if (errorMessages.length > 0){
+
+		if (emailErrors.length > 0){
 			errors = true;
 		}
 
-		this.setState({ errorMessages: errorMessages });
+		this.setState({ emailErrors: emailErrors });
 		this.setState({ buttonDisable: errors });
 
-		return errors;
 	}
+
+	private validatePassword( formState : LoginFormState ): void {
+		this.setState({ passwordErrors: [] });
+
+		let errors : boolean = false;
+		let passwordErrors : string[] = [];
+
+		if (formState.password.length < 3) {
+			passwordErrors.push("Password must be longer than 4 characters.");
+		}
+
+		if (passwordErrors.length > 0){
+			errors = true;
+		}
+
+		this.setState({ emailErrors: passwordErrors });
+		this.setState({ buttonDisable: errors });
+
+	}
+
+
+
 
 	private submitForm(): boolean {
 		// const validationErrors: string[] = this.validateForm();
