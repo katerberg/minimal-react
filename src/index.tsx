@@ -7,7 +7,7 @@ import * as logo from './logo.jpg';
 
 ReactDOM.render(
 	<div>
-		<img src={logo} className="image"/>
+		<img src={logo} className="image" />
 		<PeopleList />
 	</div>,
 	document.getElementById('app')
