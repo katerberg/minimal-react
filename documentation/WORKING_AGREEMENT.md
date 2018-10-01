@@ -8,6 +8,9 @@
 - Take top card of the iteration
 - All full stack developers
 - Tell people when picking up a card
+- Rotate pairs every 4 hours
+- Have a break at least every 2 hours while pairing
+- Try! To write tests first
 - Demos
     - In team area
     - To CE folks
