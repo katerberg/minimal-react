@@ -23,8 +23,6 @@ describe('PeopleList', () => {
 			const peopleList: PeopleList = new PeopleList({});
 
 			const filteredNames: string[] = peopleList.filterNames(name, letter);
-
-			
 		});
 
 		test('Handles Capitalization', () => {
