@@ -13,7 +13,7 @@ describe('PeopleList', () => {
 				name: 'Adrienne Costello',
 				phone: '',
 			};
-			const name: IEmployee[] = [
+			const employees: IEmployee[] = [
 				{
 					_id: '5bad03ddcf3fa4426a048ce6',
 					email: 'adam.etchason@slalom.com (Adam Etchason)',
@@ -25,7 +25,7 @@ describe('PeopleList', () => {
 			const letter: string = 'A';
 			const peopleList: PeopleList = new PeopleList({});
 
-			const filteredNames: IEmployee[] = peopleList.filterNames(name, letter);
+			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
 			expect(filteredNames).to.contain(employeeToFind);
 			expect(filteredNames.length).to.eql(1);
@@ -76,7 +76,7 @@ describe('PeopleList', () => {
 		});
 
 		test('Handles Capitalization', () => {
-			const name: IEmployee[] = [
+			const employees: IEmployee[] = [
 				{
 					_id: '5bad03ddcf3fa4426a048ce6',
 					email: 'adam.etchason@slalom.com (Adam Etchason)',
@@ -93,7 +93,7 @@ describe('PeopleList', () => {
 			const letter: string = 'A';
 			const peopleList: PeopleList = new PeopleList({});
 
-			const filteredNames: IEmployee[] = peopleList.filterNames(name, letter);
+			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
 			expect(filteredNames).to.eql([
 				{
@@ -147,22 +147,21 @@ describe('PeopleList', () => {
 				name: 'Adrienne Costello',
 				phone: '',
 			};
-			const name: IEmployee[] = [
+			const employees: IEmployee[] = [
 				{ _id: '5bad03ddcf3fa4426a048ce6', name: '', phone: '', email: 'adam.etchason@slalom.com (Adam Etchason)' },
 				employeeToFind,
 			];
 			const letter: string = 'A';
 			const peopleList: PeopleList = new PeopleList({});
 
-			const filteredNames: IEmployee[] = peopleList.filterNames(name, letter);
+			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
 			expect(filteredNames).to.eql([employeeToFind]);
 		});
-		// });
+	});
 
-		test('returns all letters in the Alphabet', () => {
-			const peopleList: ShallowWrapper = shallow(<PeopleList />);
-			expect(peopleList.find(Letter)).to.have.lengthOf(26);
-		});
+	test('returns all letters in the Alphabet', () => {
+		const peopleList: ShallowWrapper = shallow(<PeopleList />);
+		expect(peopleList.find(Letter)).to.have.lengthOf(26);
 	});
 });
