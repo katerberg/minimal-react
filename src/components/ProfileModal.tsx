@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalHeader, ListGroupItem } from 'reactstrap';
 import { Letter } from './Letter';
 import './ProfileModal.scss';
 
@@ -25,10 +25,8 @@ export class ProfileModal extends React.Component<IProfileProps, { modal: boolea
 
 	public render(): JSX.Element {
 		return (
-			<div>
-				<Button color="danger" onClick={this.toggle}>
-					{this.props.name}
-				</Button>
+			<ListGroupItem tag="button" onClick={this.toggle} action>
+				{this.props.name}
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className="profile-modal">
 					<ModalHeader toggle={this.toggle}>{this.props.name + "'s Profile"}</ModalHeader>
 					<ModalBody>
@@ -50,7 +48,7 @@ export class ProfileModal extends React.Component<IProfileProps, { modal: boolea
 						</div>
 					</ModalBody>
 				</Modal>
-			</div>
+			</ListGroupItem>
 		);
 	}
 }

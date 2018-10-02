@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ProfileModal } from './ProfileModal';
+import { ListGroup } from 'reactstrap';
 export interface ILetterProps {
 	letter: string;
 	names: string[];
@@ -11,13 +12,11 @@ export class Letter extends React.Component<ILetterProps, {}> {
 			<div>
 				<h1>{this.props.letter}</h1>
 				<hr />
-				<ul>
+				<ListGroup>
 					{this.props.names.map((name: string) => (
-						<li key={name}>
-							<ProfileModal name={name} />
-						</li>
+						<ProfileModal key={name} name={name} />
 					))}
-				</ul>
+				</ListGroup>
 			</div>
 		);
 	}

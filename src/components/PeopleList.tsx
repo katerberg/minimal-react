@@ -35,7 +35,7 @@ export class PeopleList extends React.Component {
 			'Y',
 			'Z',
 		];
-		this.names = ['Cole', 'Elizabeth', 'Jessica', 'Thomas'];
+		this.names = ['Cole', 'Judith Bryant', 'Betty Mosby', 'Chris', 'Elizabeth', 'Jessica', 'Thomas'];
 	}
 
 	public filterNames(names: string[], letter: string): string[] {
