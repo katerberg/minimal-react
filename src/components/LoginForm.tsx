@@ -111,7 +111,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.setState({ emailErrors });
 		this.setState({ buttonDisable: errors });
 
-		return errors
+		return errors;
 	}
 
 	private validatePassword(formState: ILoginFormState): boolean {
@@ -130,7 +130,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 
 		this.setState({ passwordErrors });
 		this.setState({ buttonDisable: errors });
-		return errors
+		return errors;
 	}
 
 	private submitForm(e: React.FormEvent<HTMLFormElement>): void {

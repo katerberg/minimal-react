@@ -2,8 +2,7 @@ import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Input } from 'reactstrap';
-import { ILoginFormState} from './LoginForm';
-import { LoginForm } from './LoginForm';
+import { ILoginFormState, LoginForm } from './LoginForm';
 
 describe('LoginForm tests', () => {
 	describe('validateForm()', () => {
@@ -11,10 +10,11 @@ describe('LoginForm tests', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 			const loginFormInstance: any = loginForm.instance();
 			const inputState: any = {
+				buttonDisable: true,
 				email: '',
 				emailErrors: [],
-				passwordErrors: [],
 				password: '',
+				passwordErrors: [],
 			};
 
 			jest.spyOn(loginFormInstance, 'validateEmail');
@@ -27,10 +27,11 @@ describe('LoginForm tests', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 			const loginFormInstance: any = loginForm.instance();
 			const inputState: any = {
+				buttonDisable: true,
 				email: '',
 				emailErrors: [],
-				passwordErrors: [],
 				password: '',
+				passwordErrors: [],
 			};
 			jest.spyOn(loginFormInstance, 'validatePassword');
 
@@ -63,7 +64,6 @@ describe('LoginForm tests', () => {
 			expect(loginFormInstance.state.buttonDisable).to.eql(false);
 		});
 
-
 		test('Displays email error messages from state', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 
@@ -72,7 +72,6 @@ describe('LoginForm tests', () => {
 			expect(loginForm.contains('Error1')).to.equal(true);
 			expect(loginForm.contains('Error3')).to.equal(false);
 		});
-
 
 		test('Displays password error messages from state', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
@@ -84,10 +83,10 @@ describe('LoginForm tests', () => {
 		});
 	});
 
-	describe('handleChange()', () => {
+	describe('Handle Changes()', () => {
 		test('Sets email in state when user inputs email in form', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
-			loginForm.find('#email').simulate('change', {
+			loginForm.find('#email').simulate('blur', {
 				target: { name: 'email', value: 'billy@email.com' },
 			});
 
@@ -103,13 +102,13 @@ describe('LoginForm tests', () => {
 		});
 	});
 
-	// describe('render()', () => {
-	// 	test('Displays two form inputs: one email and one password', () => {
-	// 		const loginForm: ShallowWrapper = shallow(<LoginForm />);
-	//
-	// 		expect(loginForm.find(Input)).to.have.lengthOf(2);
-	// 		expect(loginForm.find('#password')).to.have.lengthOf(1);
-	// 		expect(loginForm.find('#email')).to.have.lengthOf(1);
-	// 	});
-	// });
+	describe('render()', () => {
+		test('Displays two form inputs: one email and one password', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+
+			expect(loginForm.find(Input)).to.have.lengthOf(2);
+			expect(loginForm.find('#password')).to.have.lengthOf(1);
+			expect(loginForm.find('#email')).to.have.lengthOf(1);
+		});
+	});
 });
