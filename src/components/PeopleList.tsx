@@ -55,16 +55,16 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 	}
 
 	public filterNames(employees: IEmployee[], letter: string): IEmployee[] {
-		const nonEmptyNames: IEmployee[] = employees.filter((employee: IEmployee) => employee.name);
-		const capitalizedNames: IEmployee[] = nonEmptyNames.map((employee: IEmployee) => {
-			employee.name = employee.name[0].toUpperCase() + employee.name.slice(1);
-			return employee;
-		});
-		const filteredNames: IEmployee[] = capitalizedNames.filter((employee: IEmployee) => employee.name[0] === letter);
-
-		return filteredNames.sort((a: IEmployee, b: IEmployee) => {
-			return a.name <= b.name ? -1 : 1;
-		});
+		return employees
+			.filter((employee: IEmployee) => employee.name)
+			.map((employee: IEmployee) => {
+				employee.name = employee.name[0].toUpperCase() + employee.name.slice(1);
+				return employee;
+			})
+			.filter((employee: IEmployee) => employee.name[0] === letter)
+			.sort((a: IEmployee, b: IEmployee) => {
+				return a.name <= b.name ? -1 : 1;
+			});
 	}
 
 	public render(): JSX.Element {
