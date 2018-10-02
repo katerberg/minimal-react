@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Letter } from './Letter';
+import { Container } from 'reactstrap';
+
 export class PeopleList extends React.Component {
 	private letters: string[];
 	private names: string[];
@@ -35,7 +37,7 @@ export class PeopleList extends React.Component {
 			'Y',
 			'Z',
 		];
-		this.names = ['Cole', 'Judith Bryant', 'Betty Mosby', 'Chris', 'Elizabeth', 'Jessica', 'Thomas'];
+		this.names = ['Cole', 'Judith Bryant', 'Betty Mosbyadfkljdfllkafo', 'Chris', 'Elizabeth', 'Jessica', 'Thomas'];
 	}
 
 	public filterNames(names: string[], letter: string): string[] {
@@ -49,9 +51,11 @@ export class PeopleList extends React.Component {
 	public render(): JSX.Element {
 		return (
 			<div>
+				<Container>
 				{this.letters.map((letter: string) => (
 					<Letter key={letter} letter={letter} names={this.filterNames(this.names, letter)} />
 				))}
+				</Container>
 			</div>
 		);
 	}

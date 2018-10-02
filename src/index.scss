@@ -1,13 +1,23 @@
 #app {
   color: #818283;
   font-family: Arial, sans-serif;
+  background-image: url("./arch.jpg");
+
+  background-attachment: fixed;
+  background-size: auto 100%;
 }
 
 .image {
-  max-width: 50%;
+  max-width: 75%;
 }
 
 h1 {
   color: #0072CB;
   font-weight: bold;
+  font-size: 1.75em;
+  padding-top: 10px;
+}
+
+hr {
+  margin-top: 0px;
 }
