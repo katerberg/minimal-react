@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
@@ -26,11 +26,17 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.validateEmail = this.validateEmail.bind(this);
 		this.validatePassword = this.validatePassword.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleEmailChange = this.handleEmailChange.bind(this);
+		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
 	public render(): JSX.Element {
 		return (
-			<Form className="text-center" onSubmit={this.submitForm} noValidate={false}>
+			<Form
+				className="text-center"
+				onSubmit={this.submitForm}
+				noValidate={false}
+			>
 				<div className="container">
 					{/* TODO - render fields */}
 					<FormGroup>
@@ -38,10 +44,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 						<Input
 							id="email"
 							type="email"
-							onChange={event => {
-								this.handleChange(event.target.value, 'email');
-							}}
-							onBlur={event => this.validateEmail(this.state)}
+							onBlur={this.handleEmailChange}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -50,13 +53,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 						<Input
 							id="password"
 							type="password"
-							onFocus={event =>
-								this.handleChange(event.target.value, 'password')
-							}
-							onChange={event => {
-								this.handleChange(event.target.value, 'password');
-								this.validatePassword(this.state);
-							}}
+							onChange={this.handlePasswordChange}
 							className="form-control"
 						/>
 					</FormGroup>
@@ -79,7 +76,16 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 			</Form>
 		);
 	}
-
+	private handleEmailChange(event: React.ChangeEvent<HTMLInputElement>): void {
+		this.handleChange(event.target.value, 'email');
+		this.validateEmail(this.state);
+	}
+	private handlePasswordChange(
+		event: React.ChangeEvent<HTMLInputElement>
+	): void {
+		this.handleChange(event.target.value, 'password');
+		this.validatePassword(this.state);
+	}
 	private handleChange(value: string, key: string): void {
 		if (key === 'email') {
 			this.setState({ email: value });
@@ -88,7 +94,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		}
 	}
 
-	private validateEmail(formState: ILoginFormState): void {
+	private validateEmail(formState: ILoginFormState): boolean {
 		this.setState({ emailErrors: [] });
 
 		let errors: boolean = false;
@@ -104,6 +110,8 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 
 		this.setState({ emailErrors });
 		this.setState({ buttonDisable: errors });
+
+		return errors;
 	}
 
 	private validatePassword(formState: ILoginFormState): void {
@@ -124,17 +132,19 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.setState({ buttonDisable: errors });
 	}
 
-	private submitForm(e: any): void {
+	private submitForm(e: React.FormEvent<HTMLFormElement>): void {
 		e.preventDefault();
 
-		const user = {
+		const user: object = {
 			email: this.state.email,
 			password: this.state.password,
 		};
 
-		axios.post(`http://localhost:3000/api/login`, { user }).then(res => {
-			console.log(res);
-			console.log(res.data);
-		});
+		axios
+			.post(`http://localhost:3000/api/login`, { user })
+			.then((res: AxiosResponse) => {
+				alert(res);
+				alert(res.data);
+			});
 	}
 }

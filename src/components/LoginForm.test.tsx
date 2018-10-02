@@ -2,17 +2,35 @@ import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Input } from 'reactstrap';
+import { ILoginFormState} from './LoginForm';
 import { LoginForm } from './LoginForm';
 
 describe('LoginForm tests', () => {
 	describe('validateForm()', () => {
-		test('returns true if there are errors', () => {
+		test('returns email errors', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 			const loginFormInstance: any = loginForm.instance();
-			const inputState = {
+			const inputState: any = {
 				email: '',
+				emailErrors: ['hi'],
+				passwordErrors: ['passerror'],
 				password: '',
-				errorMessages: ['Error1', 'Error2'],
+			};
+			jest.spyOn(loginFormInstance, 'validateEmail');
+
+			const result: boolean = loginFormInstance.validateEmail(inputState);
+
+			expect(result).to.eql(true);
+		});
+
+		test('returns password errors', () => {
+			const loginForm: ShallowWrapper = shallow(<LoginForm />);
+			const loginFormInstance: any = loginForm.instance();
+			const inputState: any = {
+				email: '',
+				emailErrors: ['emailerror'],
+				passwordErrors: ['passerror'],
+				password: '',
 			};
 			jest.spyOn(loginFormInstance, 'validateForm');
 
@@ -20,6 +38,8 @@ describe('LoginForm tests', () => {
 
 			expect(result).to.eql(true);
 		});
+
+
 		test('Button enables if email and password are correct length', () => {
 			const loginForm: ShallowWrapper = shallow(<LoginForm />);
 			const loginFormInstance: any = loginForm.instance();
