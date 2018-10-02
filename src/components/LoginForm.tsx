@@ -100,7 +100,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		let errors: boolean = false;
 		const emailErrors: string[] = [];
 
-		if (!(formState.email.length > 4)) {
+		if (formState.email.length < 4) {
 			emailErrors.push('Email must be longer than 4 characters.');
 		}
 
@@ -111,10 +111,10 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.setState({ emailErrors });
 		this.setState({ buttonDisable: errors });
 
-		return errors;
+		return errors
 	}
 
-	private validatePassword(formState: ILoginFormState): void {
+	private validatePassword(formState: ILoginFormState): boolean {
 		this.setState({ passwordErrors: [] });
 
 		let errors: boolean = false;
@@ -128,8 +128,9 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 			errors = true;
 		}
 
-		this.setState({ emailErrors: passwordErrors });
+		this.setState({ passwordErrors });
 		this.setState({ buttonDisable: errors });
+		return errors
 	}
 
 	private submitForm(e: React.FormEvent<HTMLFormElement>): void {
