@@ -30,7 +30,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 
 	public render(): JSX.Element {
 		return (
-			<Form onSubmit={this.submitForm} noValidate={false}>
+			<Form className="text-center" onSubmit={this.submitForm} noValidate={false}>
 				<div className="container">
 					{/* TODO - render fields */}
 					<FormGroup>
@@ -124,19 +124,17 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.setState({ buttonDisable: errors });
 	}
 
-	private submitForm(): boolean {
-		// const validationErrors: string[] = this.validateForm();
+	private submitForm(e: any): void {
+		e.preventDefault();
 
 		const user = {
 			email: this.state.email,
 			password: this.state.password,
 		};
 
-		axios.post(`https://localhost:8080/login`, { user }).then(res => {
+		axios.post(`http://localhost:3000/api/login`, { user }).then(res => {
 			console.log(res);
 			console.log(res.data);
 		});
-
-		return true;
 	}
 }
