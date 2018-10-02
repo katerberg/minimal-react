@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Letter } from './Letter';
 import { Container } from 'reactstrap';
+import { Letter } from './Letter';
 
 export class PeopleList extends React.Component {
 	private letters: string[];
@@ -52,9 +52,9 @@ export class PeopleList extends React.Component {
 		return (
 			<div>
 				<Container>
-				{this.letters.map((letter: string) => (
-					<Letter key={letter} letter={letter} names={this.filterNames(this.names, letter)} />
-				))}
+					{this.letters.map((letter: string) => (
+						<Letter key={letter} letter={letter} names={this.filterNames(this.names, letter)} />
+					))}
 				</Container>
 			</div>
 		);

@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Col, ListGroup, Row } from 'reactstrap';
 import { ProfileModal } from './ProfileModal';
-import { ListGroup, Row, Col } from 'reactstrap';
 export interface ILetterProps {
 	letter: string;
 	names: string[];
