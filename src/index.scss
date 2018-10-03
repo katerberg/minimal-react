@@ -1,10 +1,7 @@
 #app {
   color: #818283;
   font-family: Arial, sans-serif;
-  background-image: url("./arch.jpg");
-
-  background-attachment: fixed;
-  background-size: auto 100%;
+  background: url("./arch.jpg") no-repeat top center fixed;
 }
 
 .image {
