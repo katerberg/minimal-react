@@ -32,37 +32,19 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 
 	public render(): JSX.Element {
 		return (
-			<Form
-				className="text-center"
-				onSubmit={this.submitForm}
-				noValidate={false}
-			>
+			<Form className="text-center" onSubmit={this.submitForm} noValidate={false}>
 				<div className="container">
 					{/* TODO - render fields */}
 					<FormGroup>
 						<Label>Email: </Label>
-						<Input
-							id="email"
-							type="email"
-							onBlur={this.handleEmailChange}
-							className="form-control"
-						/>
+						<Input id="email" type="email" onBlur={this.handleEmailChange} className="form-control" />
 					</FormGroup>
 					<FormGroup>
 						<Label>Password: </Label>
-						<Input
-							id="password"
-							type="password"
-							onChange={this.handlePasswordChange}
-							className="form-control"
-						/>
+						<Input id="password" type="password" onChange={this.handlePasswordChange} className="form-control" />
 					</FormGroup>
 					<div className="form-group">
-						<Button
-							type="submit"
-							className="btn btn-success"
-							disabled={this.state.buttonDisable}
-						>
+						<Button type="submit" className="btn btn-success" disabled={this.state.buttonDisable}>
 							Submit
 						</Button>
 						{this.state.emailErrors.map((emErr: string) => (
@@ -80,9 +62,7 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 		this.handleChange(event.target.value, 'email');
 		this.validateEmail(this.state);
 	}
-	private handlePasswordChange(
-		event: React.ChangeEvent<HTMLInputElement>
-	): void {
+	private handlePasswordChange(event: React.ChangeEvent<HTMLInputElement>): void {
 		this.handleChange(event.target.value, 'password');
 		this.validatePassword(this.state);
 	}
@@ -141,11 +121,9 @@ export class LoginForm extends React.Component<{}, ILoginFormState> {
 			password: this.state.password,
 		};
 
-		axios
-			.post(`http://localhost:3000/api/login`, { user })
-			.then((res: AxiosResponse) => {
-				alert(res);
-				alert(res.data);
-			});
+		axios.post(`http://localhost:3000/api/login`, { user }).then((res: AxiosResponse) => {
+			alert(res);
+			alert(res.data);
+		});
 	}
 }
