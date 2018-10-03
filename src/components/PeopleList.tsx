@@ -40,12 +40,8 @@ export class PeopleList extends React.Component {
 
 	public filterNames(names: string[], letter: string): string[] {
 		const nonEmptyNames: string[] = names.filter((name: string) => name);
-		const capitalizedNames: string[] = nonEmptyNames.map(
-			(name: string) => name[0].toUpperCase() + name.slice(1)
-		);
-		const filteredNames: string[] = capitalizedNames.filter(
-			(name: string) => name[0] === letter
-		);
+		const capitalizedNames: string[] = nonEmptyNames.map((name: string) => name[0].toUpperCase() + name.slice(1));
+		const filteredNames: string[] = capitalizedNames.filter((name: string) => name[0] === letter);
 
 		return filteredNames.sort();
 	}
@@ -54,11 +50,7 @@ export class PeopleList extends React.Component {
 		return (
 			<div>
 				{this.letters.map((letter: string) => (
-					<Letter
-						key={letter}
-						letter={letter}
-						names={this.filterNames(this.names, letter)}
-					/>
+					<Letter key={letter} letter={letter} names={this.filterNames(this.names, letter)} />
 				))}
 			</div>
 		);
