@@ -13,7 +13,7 @@ export class SearchComponent extends React.Component<ISearchComponentProps, {}> 
 		return (
 			<div>
 				<Label>Search</Label>
-				<Input type="text" onKeyUp={this.props.searchByLetter.bind(this)} />
+				<Input type="text" maxLength={1} onKeyUp={this.props.searchByLetter.bind(this)} />
 			</div>
 		);
 	}

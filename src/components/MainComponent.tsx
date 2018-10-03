@@ -51,13 +51,19 @@ export class MainComponent extends React.Component<{}, IMainComponentState> {
     letters: this.letters  };
     axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
       const users: IEmployee[] = res.data;
-      this.setState({ employees: users });
+      this.setState({ employees: users, letters: this.letters });
     });
   }
 
     public searchByLetter(event: KeyboardEvent): string {
         const input = event.target as HTMLInputElement
-        console.log(input.value);
+        const inputLength: number = input.value.length;
+        if (inputLength > 0){
+          // this.setState([input.value]);
+        }
+        else {
+          // this.setState({letters: this.letters});
+        }
   		return "Hooray";
   	}
 
@@ -70,4 +76,3 @@ export class MainComponent extends React.Component<{}, IMainComponentState> {
     		);
     	}
     }
-  
