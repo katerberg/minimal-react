@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { Col, ListGroup, Row } from 'reactstrap';
+import { Col, Container, ListGroup, Row } from 'reactstrap';
+import { IEmployee } from './PeopleList';
 import { ProfileModal } from './ProfileModal';
+
 export interface ILetterProps {
 	letter: string;
-	names: string[];
+	employees: IEmployee[];
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
 	public render(): JSX.Element {
 		return (
-			<div>
+			<Container>
 				<Row>
 					<Col>
 						<h1>{this.props.letter}</h1>
@@ -19,13 +21,13 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<ListGroup>
 					<Row>
 						<Col sm="6" lg="4">
-							{this.props.names.map((name: string) => (
-								<ProfileModal key={name} name={name} />
+							{this.props.employees.map((employee: IEmployee) => (
+								<ProfileModal key={employee._id} name={employee.name} />
 							))}
 						</Col>
 					</Row>
 				</ListGroup>
-			</div>
+			</Container>
 		);
 	}
 }

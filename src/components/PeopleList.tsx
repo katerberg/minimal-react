@@ -1,13 +1,29 @@
+import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import { Letter } from './Letter';
 
-export class PeopleList extends React.Component {
+export interface IEmployee {
+	_id: string;
+	email: string;
+	name: string;
+	phone: string;
+}
+
+interface IPeopleListState {
+	employees: IEmployee[];
+}
+
+export class PeopleList extends React.Component<{}, IPeopleListState> {
 	private letters: string[];
-	private names: string[];
 
 	constructor(props: object) {
 		super(props);
+		this.state = { employees: [] };
+		axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
+			const users: IEmployee[] = res.data;
+			this.setState({ employees: users });
+		});
 
 		this.letters = [
 			'A',
@@ -37,25 +53,27 @@ export class PeopleList extends React.Component {
 			'Y',
 			'Z',
 		];
-		this.names = ['Cole', 'Judith Bryant', 'Betty Mosbyadfkljdfllkafo', 'Chris', 'Elizabeth', 'Jessica', 'Thomas'];
 	}
 
-	public filterNames(names: string[], letter: string): string[] {
-		const nonEmptyNames: string[] = names.filter((name: string) => name);
-		const capitalizedNames: string[] = nonEmptyNames.map((name: string) => name[0].toUpperCase() + name.slice(1));
-		const filteredNames: string[] = capitalizedNames.filter((name: string) => name[0] === letter);
-
-		return filteredNames.sort();
+	public filterNames(employees: IEmployee[], letter: string): IEmployee[] {
+		return employees
+			.filter((employee: IEmployee) => employee.name)
+			.map((employee: IEmployee) => {
+				employee.name = employee.name[0].toUpperCase() + employee.name.slice(1);
+				return employee;
+			})
+			.filter((employee: IEmployee) => employee.name[0] === letter)
+			.sort((a: IEmployee, b: IEmployee) => {
+				return a.name <= b.name ? -1 : 1;
+			});
 	}
 
 	public render(): JSX.Element {
 		return (
 			<div>
-				<Container>
-					{this.letters.map((letter: string) => (
-						<Letter key={letter} letter={letter} names={this.filterNames(this.names, letter)} />
-					))}
-				</Container>
+				{this.letters.map((letter: string) => (
+					<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
+				))}
 			</div>
 		);
 	}
