@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Letter } from './Letter';
-import { PeopleList } from './PeopleList';
 import { IEmployee } from './MainComponent';
+import { PeopleList } from './PeopleList';
 
 describe('PeopleList', () => {
 	describe('filterNames()', () => {
@@ -24,7 +24,7 @@ describe('PeopleList', () => {
 				employeeToFind,
 			];
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
@@ -48,7 +48,7 @@ describe('PeopleList', () => {
 			const employees: IEmployee[] = [adrienne, adam];
 
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 			expect(filteredNames).to.eql([adam, adrienne]);
@@ -70,7 +70,7 @@ describe('PeopleList', () => {
 			const employees: IEmployee[] = [otherAdam, adam];
 
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 			expect(filteredNames).to.eql([otherAdam, adam]);
@@ -92,7 +92,7 @@ describe('PeopleList', () => {
 				},
 			];
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
@@ -134,7 +134,7 @@ describe('PeopleList', () => {
 			const employees: IEmployee[] = [amy, adrienne, adam];
 
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
@@ -153,7 +153,7 @@ describe('PeopleList', () => {
 				employeeToFind,
 			];
 			const letter: string = 'A';
-			const peopleList: PeopleList = new PeopleList({});
+			const peopleList: PeopleList = new PeopleList({employees: this.employees, letters: [this.letter]});
 
 			const filteredNames: IEmployee[] = peopleList.filterNames(employees, letter);
 
@@ -162,7 +162,35 @@ describe('PeopleList', () => {
 	});
 
 	test('returns all letters in the Alphabet', () => {
-		const peopleList: ShallowWrapper = shallow(<PeopleList />);
+
+		const peopleList: ShallowWrapper = shallow(<PeopleList employees={[]} letters={[
+			'A',
+			'B',
+			'C',
+			'D',
+			'E',
+			'F',
+			'G',
+			'H',
+			'I',
+			'J',
+			'K',
+			'L',
+			'M',
+			'N',
+			'O',
+			'P',
+			'Q',
+			'R',
+			'S',
+			'T',
+			'U',
+			'V',
+			'W',
+			'X',
+			'Y',
+			'Z',
+		]}/>);
 		expect(peopleList.find(Letter)).to.have.lengthOf(26);
 	});
 });

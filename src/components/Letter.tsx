@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IEmployee } from './PeopleList';
+import { IEmployee } from './MainComponent';
 import { ProfileModal } from './ProfileModal';
 
 export interface ILetterProps {

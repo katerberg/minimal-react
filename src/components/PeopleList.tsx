@@ -1,4 +1,3 @@
-import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Letter } from './Letter';
 import { IEmployee } from './MainComponent';
@@ -9,11 +8,13 @@ interface IPeopleListProps {
 }
 
 export class PeopleList extends React.Component<IPeopleListProps, {}> {
-	constructor(props: object) {
+	public state: IPeopleListProps;
+
+	constructor(props: IPeopleListProps) {
 		super(props);
 		this.state = {
 			employees: this.props.employees,
-			letters: this.props.letters
+			letters: this.props.letters,
 		};
 	}
 
@@ -34,7 +35,7 @@ export class PeopleList extends React.Component<IPeopleListProps, {}> {
 		return (
 			<div>
 				{this.state.letters.map((letter: string) => (
-					<Letter key={letter} letter={letter} employees={filterNames(this.state.employees, letter)} />
+					<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
 				))}
 			</div>
 		);
