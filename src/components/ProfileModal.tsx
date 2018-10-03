@@ -4,7 +4,9 @@ import { Letter } from './Letter';
 import './ProfileModal.scss';
 
 export interface IProfileProps {
+	email: string;
 	name: string;
+	phone: string;
 }
 
 export class ProfileModal extends React.Component<IProfileProps, { modal: boolean }> {
@@ -36,10 +38,9 @@ export class ProfileModal extends React.Component<IProfileProps, { modal: boolea
 							<span>
 								<img src="https://placeimg.com/150/150/animals" className="rounded-circle" />
 							</span>
-							<h2>{this.props.name}</h2>
-							<h3>Email</h3>
-							<h3>ID #</h3>
-							<h3>Pronoun</h3>
+							<h4>{this.props.name}</h4>
+							<h5>{this.props.email}</h5>
+							<h5>{this.props.phone}</h5>
 							<p>
 								Most doctors agree that bicycle skiing.is a blue form of exercise that benefits trashcans.of all ages.
 								Riding a bicycle enables you to develop your foot.muscles as well as quickly.increase the rate of your

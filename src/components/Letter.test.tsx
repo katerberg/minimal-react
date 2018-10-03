@@ -8,13 +8,13 @@ import { ProfileModal } from './ProfileModal';
 describe('Letter', () => {
 	test('Shows letters larger than names', () => {
 		const letter: ShallowWrapper = shallow(
-			<Letter letter="Q" employees={[{ _id: 'Q', phone: '', email: '', name: 'Quincy' }]} />
+			<Letter letter="Q" employees={[{ _id: 'Q', phone: '314971000', email: 'test@slalom.com', name: 'Quincy' }]} />
 		);
 		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
 		expect(
 			letter.contains(
 				<li key="Q">
-					<ProfileModal name={'Quincy'} />
+					<ProfileModal name={'Quincy'} phone={'314971000'} email={'test@slalom.com'} />
 				</li>
 			)
 		).to.equal(true);

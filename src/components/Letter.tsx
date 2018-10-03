@@ -16,7 +16,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<ul>
 					{this.props.employees.map((employee: IEmployee) => (
 						<li key={employee._id}>
-							<ProfileModal name={employee.name} />
+							<ProfileModal name={employee.name} email={employee.email} phone={employee.phone} />
 						</li>
 					))}
 				</ul>
