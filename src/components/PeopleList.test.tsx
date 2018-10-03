@@ -2,7 +2,8 @@ import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Letter } from './Letter';
-import { IEmployee, PeopleList } from './PeopleList';
+import { PeopleList } from './PeopleList';
+import { IEmployee } from './MainComponent';
 
 describe('PeopleList', () => {
 	describe('filterNames()', () => {

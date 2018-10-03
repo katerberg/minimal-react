@@ -1,57 +1,20 @@
 import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Letter } from './Letter';
+import { IEmployee } from './MainComponent';
 
-export interface IEmployee {
-	_id: string;
-	email: string;
-	name: string;
-	phone: string;
-}
-
-interface IPeopleListState {
+interface IPeopleListProps {
 	employees: IEmployee[];
+	letters: string[];
 }
 
-export class PeopleList extends React.Component<{}, IPeopleListState> {
-	private letters: string[];
-
+export class PeopleList extends React.Component<IPeopleListProps, {}> {
 	constructor(props: object) {
 		super(props);
-		this.state = { employees: [] };
-		axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
-			const users: IEmployee[] = res.data;
-			this.setState({ employees: users });
-		});
-
-		this.letters = [
-			'A',
-			'B',
-			'C',
-			'D',
-			'E',
-			'F',
-			'G',
-			'H',
-			'I',
-			'J',
-			'K',
-			'L',
-			'M',
-			'N',
-			'O',
-			'P',
-			'Q',
-			'R',
-			'S',
-			'T',
-			'U',
-			'V',
-			'W',
-			'X',
-			'Y',
-			'Z',
-		];
+		this.state = {
+			employees: this.props.employees,
+			letters: this.props.letters
+		};
 	}
 
 	public filterNames(employees: IEmployee[], letter: string): IEmployee[] {
@@ -70,8 +33,8 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 	public render(): JSX.Element {
 		return (
 			<div>
-				{this.letters.map((letter: string) => (
-					<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
+				{this.state.letters.map((letter: string) => (
+					<Letter key={letter} letter={letter} employees={filterNames(this.state.employees, letter)} />
 				))}
 			</div>
 		);
