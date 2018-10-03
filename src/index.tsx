@@ -5,10 +5,19 @@ import 'bootstrap/dist/css/bootstrap.min.css'; //tslint:disable-line
 import './index.scss';
 import * as logo from './logo.jpg';
 
-ReactDOM.render(
-	<div>
-		<img src={logo} className="image" />
-		<PeopleList />
-	</div>,
-	document.getElementById('app')
-);
+import { runWithAdal } from 'react-adal';
+import { authContext } from './adalConfig';
+
+const DO_NOT_LOGIN = false;
+
+runWithAdal(authContext, () => {
+  ReactDOM.render(
+
+    <div>
+      <img src={logo} className="image" />
+      <PeopleList />
+    </div>,
+    document.getElementById('app')
+  );
+
+    },DO_NOT_LOGIN);
