@@ -17,13 +17,13 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				</Row>
 				<hr />
 				<ListGroup>
-					{this.props.names.map((name: string) => (
-						<Row>
-							<Col sm="6" lg="4">
+					<Row>
+						<Col sm="6" lg="4">
+							{this.props.names.map((name: string) => (
 								<ProfileModal key={name} name={name} />
-							</Col>
-						</Row>
-					))}
+							))}
+						</Col>
+					</Row>
 				</ListGroup>
 			</div>
 		);

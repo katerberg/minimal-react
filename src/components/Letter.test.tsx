@@ -23,7 +23,15 @@ describe('Letter', () => {
 	test('Displays no list when there are no names for that letter', () => {
 		const letter: ShallowWrapper = shallow(<Letter letter="Q" names={[]} />);
 		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
-		expect(letter.contains(<ListGroup />)).to.equal(true);
+		expect(
+			letter.contains(
+				<ListGroup>
+					<Row>
+						<Col sm="6" lg="4" />
+					</Row>
+				</ListGroup>
+			)
+		).to.equal(true);
 	});
 	test('Displays line under each letter', () => {
 		const letter: ShallowWrapper = shallow(<Letter letter="Q" names={[]} />);
