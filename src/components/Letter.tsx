@@ -1,8 +1,10 @@
 import * as React from 'react';
+import { IEmployee } from './PeopleList';
 import { ProfileModal } from './ProfileModal';
+
 export interface ILetterProps {
 	letter: string;
-	names: string[];
+	employees: IEmployee[];
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
@@ -12,9 +14,9 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<h1>{this.props.letter}</h1>
 				<hr />
 				<ul>
-					{this.props.names.map(name => (
-						<li key={name}>
-							<ProfileModal name={name} />
+					{this.props.employees.map(employee => (
+						<li key={employee._id}>
+							<ProfileModal name={employee.name} />
 						</li>
 					))}
 				</ul>
