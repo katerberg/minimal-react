@@ -6,7 +6,7 @@ interface ISearchComponentProps {
 }
 
 export class SearchComponent extends React.Component<ISearchComponentProps, {}> {
-  constructor(props: ISearchComponentProps) {
+	constructor(props: ISearchComponentProps) {
 		super(props);
 	}
 	public render(): JSX.Element {

@@ -18,14 +18,14 @@ export class PeopleList extends React.Component<IPeopleListProps, {}> {
 		};
 	}
 
-	componentWillReceiveProps(nextProps: IPeopleListProps){
-       if(nextProps.employees !== this.props.employees){
-           this.setState({employees: nextProps.employees});
-       }
-			 if(nextProps.letters !== this.props.letters){
-           this.setState({letters: nextProps.letters});
-       }
-   }
+	public componentWillReceiveProps(nextProps: IPeopleListProps): void {
+		if (nextProps.employees !== this.props.employees) {
+			this.setState({ employees: nextProps.employees });
+		}
+		if (nextProps.letters !== this.props.letters) {
+			this.setState({ letters: nextProps.letters });
+		}
+	}
 
 	public filterNames(employees: IEmployee[], letter: string): IEmployee[] {
 		return employees

@@ -6,8 +6,8 @@ import { SearchComponent } from './SearchComponent';
 
 describe('<SearchComponent>', () => {
 	it('renders both the word "Search" and <Input>', () => {
-		const wrapper: ShallowWrapper = shallow(<SearchComponent searchByLetter={()=>"Hello"}/>);
+		const wrapper: ShallowWrapper = shallow(<SearchComponent searchByLetter={() => 'Hello'} />);
 		expect(wrapper.contains(<Label>Search</Label>)).to.equal(true);
-		expect(wrapper.contains(<Input type="text" onKeyUp={this.props.searchByLetter.bind(this)} />)).to.equal(true);
+		expect(wrapper.contains(<Input type="text" maxLength={1} onKeyUp={this.props.searchByLetter} />)).to.equal(true);
 	});
 });
