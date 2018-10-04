@@ -51,23 +51,27 @@ export class MainComponent extends React.Component<{}, IMainComponentState> {
     letters: this.letters  };
     axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
       const users: IEmployee[] = res.data;
-      this.setState({ employees: users, letters: this.letters });
+      this.setState({ employees: users });
     });
+		this.searchByLetter = this.searchByLetter.bind(this);
   }
 
-    public searchByLetter(event: KeyboardEvent): string {
+    public searchByLetter(event:React.KeyboardEvent): void {
+			console.log(this);
         const input = event.target as HTMLInputElement
         const inputLength: number = input.value.length;
         if (inputLength > 0){
-          // this.setState([input.value]);
+          console.log("Supposed to be setting state to the one letter" + input.value);
+          this.setState({letters: [input.value]});
         }
         else {
-          // this.setState({letters: this.letters});
+          console.log("Supposed to be setting state to whole list");
+          this.setState({letters: this.letters});
         }
-  		return "Hooray";
   	}
 
     public render(): JSX.Element {
+			console.log("Rerendering");
     		return (
     			<div>
             <SearchComponent searchByLetter={this.searchByLetter} />
