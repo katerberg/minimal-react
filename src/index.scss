@@ -1,5 +1,22 @@
 #app {
-  color: red;
+  color: #818283;
+  font-family: Arial, sans-serif;
+  background: url("./arch.jpg") no-repeat top center fixed;
+}
+
+.image {
+  max-width: 75%;
+}
+
+h1 {
+  color: #0072CB;
+  font-weight: bold;
+  font-size: 1.75em;
+  padding-top: 10px;
+}
+
+hr {
+  margin-top: 0px;
 }
 .image{
   width: 50%;
