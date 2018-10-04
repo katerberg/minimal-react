@@ -5,9 +5,10 @@ import { Input, Label } from 'reactstrap';
 import { SearchComponent } from './SearchComponent';
 
 describe('<SearchComponent>', () => {
-	it('renders both the word "Search" and <Input>', () => {
+	it.only('renders both the word "Search" and <Input>', () => {
 		const wrapper: ShallowWrapper = shallow(<SearchComponent searchByLetter={() => 'Hello'} />);
+		const props: any = wrapper.instance().props;
 		expect(wrapper.contains(<Label>Search</Label>)).to.equal(true);
-		expect(wrapper.contains(<Input type="text" maxLength={1} onKeyUp={this.props.searchByLetter} />)).to.equal(true);
+		expect(wrapper.contains(<Input type="text" maxLength={1} onKeyUp={props.searchByLetter} />)).to.equal(true);
 	});
 });
