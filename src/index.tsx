@@ -8,7 +8,7 @@ import * as logo from './logo.png';
 import { runWithAdal } from 'react-adal';
 import { authContext } from './adalConfig';
 
-const DO_NOT_LOGIN = false;
+const DO_NOT_LOGIN : boolean = false;
 
 runWithAdal(authContext, () => {
   ReactDOM.render(

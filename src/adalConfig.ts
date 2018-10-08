@@ -1,6 +1,6 @@
 import { adalFetch, AuthenticationContext, withAdalLogin } from 'react-adal';
 
-export const adalConfig: any = {
+export const adalConfig: AdalConfig = {
   clientId: '0b373a7b-2a2c-48a4-9d03-a95cfe76fded',
   endpoints: {
     api: '14d71d65-f596-4eae-be30-27f079bf8d4b',
