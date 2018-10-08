@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
-import { Modal } from 'reactstrap';
+import { ListGroupItem, Modal } from 'reactstrap';
 import { IProfileProps, ProfileModal } from './ProfileModal';
 
 describe('<ProfileModal>', () => {
@@ -13,7 +13,7 @@ describe('<ProfileModal>', () => {
 	it('opens modal when button is clicked', () => {
 		const wrapper: ShallowWrapper = shallow(<ProfileModal name={''} email={''} phone={''} />);
 
-		wrapper.find('Button').simulate('click');
+		wrapper.find('ListGroupItem').simulate('click');
 		expect(wrapper.find(Modal).prop('isOpen')).to.eql(true);
 	});
 
@@ -21,7 +21,7 @@ describe('<ProfileModal>', () => {
 		const wrapper: ShallowWrapper = shallow(
 			<ProfileModal name={'Quincy'} email={'Quincy@test.com'} phone={'555-555-5555'} />
 		);
-		wrapper.find('Button').simulate('click');
+		wrapper.find('ListGroupItem').simulate('click');
 		expect(wrapper.find(Modal).contains(<h4>Quincy</h4>)).to.eql(true);
 		expect(wrapper.find(Modal).contains(<h5>Quincy@test.com</h5>)).to.eql(true);
 		expect(wrapper.find(Modal).contains(<h5>555-555-5555</h5>)).to.eql(true);
