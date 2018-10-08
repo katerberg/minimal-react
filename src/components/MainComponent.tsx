@@ -59,7 +59,7 @@ export class MainComponent extends React.Component<{}, IMainComponentState> {
 	}
 
 	public searchByLetter(event: React.KeyboardEvent): void {
-		const input = event.target as HTMLInputElement;
+		const input: HTMLInputElement = event.target as HTMLInputElement;
 		const inputLength: number = input.value.length;
 		if (inputLength > 0) {
 			const upperCaseInputValue: string = input.value.toUpperCase();
