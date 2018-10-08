@@ -22,7 +22,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 					<Row>
 						<Col sm="6" lg="4">
 							{this.props.employees.map((employee: IEmployee) => (
-								<ProfileModal key={employee._id} name={employee.name} />
+								<ProfileModal key={employee._id} name={employee.name} email={employee.email} phone={employee.phone} />
 							))}
 						</Col>
 					</Row>

@@ -19,19 +19,7 @@
                 "timeEnd",
                 "trace"
             ]
-        },
-        "typedef": [
-          true,
-          "call-signature",
-          "arrow-call-signature",
-          "parameter",
-          "arrow-parameter",
-          "property-declaration",
-          "variable-declaration",
-          "member-variable-declaration",
-          "object-destructuring",
-          "array-destructuring"
-        ]
+        }
     },
     "rulesDirectory": [
       "node_modules/tslint-eslint-rules/dist/rules"
