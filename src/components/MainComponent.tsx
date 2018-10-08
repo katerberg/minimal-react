@@ -16,7 +16,7 @@ interface IMainComponentState {
 }
 
 export class MainComponent extends React.Component<{}, IMainComponentState> {
-	private letters: string[] = [
+	public letters: string[] = [
 		'A',
 		'B',
 		'C',
