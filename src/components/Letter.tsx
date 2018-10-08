@@ -21,7 +21,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 				<ListGroup>
 					<Row>
 						<Col sm="6" lg="4">
-							{this.props.employees.map((employee: IEmployee) => (
+							{this.props.employees.map(employee => (
 								<ProfileModal key={employee._id} name={employee.name} />
 							))}
 						</Col>
