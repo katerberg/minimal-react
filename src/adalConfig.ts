@@ -1,4 +1,4 @@
-import { adalFetch, AuthenticationContext, withAdalLogin } from 'react-adal';
+import { AdalConfig, adalFetch, AuthenticationContext, withAdalLogin } from 'react-adal';
 
 export const adalConfig: AdalConfig = {
   clientId: '0b373a7b-2a2c-48a4-9d03-a95cfe76fded',
@@ -10,6 +10,8 @@ export const adalConfig: AdalConfig = {
 
 export const authContext: AuthenticationContext = new AuthenticationContext(adalConfig);
 
-export const adalApiFetch = (fetch: (input: string, init: any) => Promise<any>, url: string) => adalFetch(authContext, adalConfig.endpoints.api, fetch, url, {});
-
-export const withAdalLoginApi = withAdalLogin(authContext, adalConfig.endpoints.api);
+export const withAdalLoginApi : (
+    wrappedComponent: React.ComponentClass | React.StatelessComponent,
+    renderLoading: () => JSX.Element | null,
+    renderError: (error: any) => JSX.Element | null
+) => React.ComponentClass = withAdalLogin(authContext, adalConfig.endpoints.api);
