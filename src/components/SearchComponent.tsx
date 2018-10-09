@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input, Label } from 'reactstrap';
+import { Container, Input, Label } from 'reactstrap';
 
 interface ISearchComponentProps {
 	searchByLetter: (event: React.KeyboardEvent<Element>) => void;
@@ -11,10 +11,10 @@ export class SearchComponent extends React.Component<ISearchComponentProps, {}> 
 	}
 	public render(): JSX.Element {
 		return (
-			<div>
+			<Container>
 				<Label>Search</Label>
 				<Input type="text" maxLength={1} onKeyUp={this.props.searchByLetter} />
-			</div>
+			</Container>
 		);
 	}
 }
