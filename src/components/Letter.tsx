@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IEmployee } from './MainComponent';
+import { Col, Container, ListGroup, Row } from 'reactstrap';
 import { ProfileModal } from './ProfileModal';
 
 export interface ILetterProps {
@@ -10,17 +11,23 @@ export interface ILetterProps {
 export class Letter extends React.Component<ILetterProps, {}> {
 	public render(): JSX.Element {
 		return (
-			<div>
-				<h1>{this.props.letter}</h1>
+			<Container>
+				<Row>
+					<Col>
+						<h1>{this.props.letter}</h1>
+					</Col>
+				</Row>
 				<hr />
-				<ul>
-					{this.props.employees.map((employee: IEmployee) => (
-						<li key={employee._id}>
-							<ProfileModal name={employee.name} />
-						</li>
-					))}
-				</ul>
-			</div>
+				<ListGroup>
+					<Row>
+						<Col sm="6" lg="4">
+							{this.props.employees.map((employee: IEmployee) => (
+								<ProfileModal key={employee._id} name={employee.name} email={employee.email} phone={employee.phone} />
+							))}
+						</Col>
+					</Row>
+				</ListGroup>
+			</Container>
 		);
 	}
 }

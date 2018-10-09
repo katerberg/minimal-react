@@ -2,7 +2,7 @@
     "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
     "rules": {
         "new-parens": true,
-        "no-any": false,
+        "no-any": true,
         "no-arg": true,
         "no-bitwise": true,
         "no-conditional-assignment": true,
@@ -19,19 +19,7 @@
                 "timeEnd",
                 "trace"
             ]
-        },
-        "typedef": [
-          true,
-          "call-signature",
-          "arrow-call-signature",
-          "parameter",
-          "arrow-parameter",
-          "property-declaration",
-          "variable-declaration",
-          "member-variable-declaration",
-          "object-destructuring",
-          "array-destructuring"
-        ]
+        }
     },
     "rulesDirectory": [
       "node_modules/tslint-eslint-rules/dist/rules"

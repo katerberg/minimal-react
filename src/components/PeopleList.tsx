@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Container } from 'reactstrap';
 import { Letter } from './Letter';
 import { IEmployee } from './MainComponent';
 
