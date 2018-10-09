@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Col, Container, ListGroup, Row } from 'reactstrap';
+import './Letter.scss';
 import { IEmployee } from './PeopleList';
 import { ProfileModal } from './ProfileModal';
 
@@ -14,7 +15,7 @@ export class Letter extends React.Component<ILetterProps, {}> {
 			<Container>
 				<Row>
 					<Col>
-						<h1>{this.props.letter}</h1>
+						<h1 className="letter-name">{this.props.letter}</h1>
 					</Col>
 				</Row>
 				<hr />

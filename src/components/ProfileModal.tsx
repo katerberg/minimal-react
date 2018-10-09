@@ -27,7 +27,7 @@ export class ProfileModal extends React.Component<IProfileProps, { modal: boolea
 
 	public render(): JSX.Element {
 		return (
-			<ListGroupItem tag="button" onClick={this.toggle} action={true} class="list-group-item">
+			<ListGroupItem tag="button" onClick={this.toggle} action={true} className="list-group-item">
 				{this.props.name}
 				<Modal isOpen={this.state.modal} toggle={this.toggle} className="profile-modal">
 					<ModalHeader toggle={this.toggle}>
