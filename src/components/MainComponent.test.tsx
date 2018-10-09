@@ -2,13 +2,14 @@ import * as chai from 'chai';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Label } from 'reactstrap';
-import * as sinon from 'sinon';
+import sinon = require('sinon');
+import { SinonStub } from 'sinon';
 import sinonChai = require('sinon-chai');
 import { IEmployee, MainComponent } from './MainComponent';
 import { PeopleList } from './PeopleList';
 import { SearchComponent } from './SearchComponent';
 chai.use(sinonChai);
-const { expect }: any = chai;
+const { expect } = chai;
 
 describe('<MainComponent>', () => {
 	it('renders <PeopleList> and <SearchComponent>', () => {
@@ -19,7 +20,7 @@ describe('<MainComponent>', () => {
 
 	describe('searchByLetter()', () => {
 		let testObject: MainComponent;
-		let stub: any;
+		let stub: SinonStub;
 
 		beforeEach(() => {
 			testObject = new MainComponent({});
