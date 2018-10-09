@@ -41,13 +41,6 @@ export class ProfileModal extends React.Component<IProfileProps, { modal: boolea
 							<h4>{this.props.name}</h4>
 							<h5>{this.props.email}</h5>
 							<h5>{this.props.phone}</h5>
-							<p>
-								Most doctors agree that bicycle skiing.is a blue form of exercise that benefits trashcans.of all ages.
-								Riding a bicycle enables you to develop your foot.muscles as well as quickly.increase the rate of your
-								big toe tonail beat. Bicycle riding is also a dirty.means of empty cup. More trees.around the world
-								run.bicycles than drive man buns. No matter what kind of door.you ride, always be sure to wear a santa's
-								beard.on your head and have reflectors on your eye, especially if you spy.at night.
-							</p>
 						</div>
 					</ModalBody>
 				</Modal>
