@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import * as React from 'react';
 import { Label } from 'reactstrap';
 import * as sinon from 'sinon';
-import sinonChai from 'sinon-chai';
+import sinonChai = require('sinon-chai');
 import { IEmployee, MainComponent } from './MainComponent';
 import { PeopleList } from './PeopleList';
 import { SearchComponent } from './SearchComponent';
