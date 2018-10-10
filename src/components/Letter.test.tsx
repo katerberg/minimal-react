@@ -11,7 +11,7 @@ describe('Letter', () => {
 		const letter: ShallowWrapper = shallow(
 			<Letter letter="Q" employees={[{ _id: 'Q', phone: '314971000', email: 'test@slalom.com', name: 'Quincy' }]} />
 		);
-		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
+		expect(letter.contains(<h1 className="letter-name">Q</h1>)).to.equal(true);
 		expect(
 			letter.contains(
 				<Row>
@@ -24,7 +24,7 @@ describe('Letter', () => {
 	});
 	test('Displays no list when there are no names for that letter', () => {
 		const letter: ShallowWrapper = shallow(<Letter letter="Q" employees={[]} />);
-		expect(letter.contains(<h1>Q</h1>)).to.equal(true);
+		expect(letter.contains(<h1 className="letter-name">Q</h1>)).to.equal(true);
 		expect(
 			letter.contains(
 				<ListGroup>
