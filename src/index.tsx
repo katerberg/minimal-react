@@ -8,16 +8,18 @@ import * as logo from './logo.png';
 import { runWithAdal } from 'react-adal';
 import { authContext } from './adalConfig';
 
-const DO_NOT_LOGIN : boolean = false;
+const DO_NOT_LOGIN: boolean = false;
 
-runWithAdal(authContext, () => {
-  ReactDOM.render(
-
-    <div>
-      <img src={logo} className="image" />
-      <PeopleList />
-    </div>,
-    document.getElementById('app')
-  );
-
-    },DO_NOT_LOGIN);
+runWithAdal(
+	authContext,
+	() => {
+		ReactDOM.render(
+			<div>
+				<img src={logo} className="image" />
+				<PeopleList />
+			</div>,
+			document.getElementById('app')
+		);
+	},
+	DO_NOT_LOGIN
+);
