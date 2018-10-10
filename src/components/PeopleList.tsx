@@ -2,6 +2,7 @@ import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import { Letter } from './Letter';
+import './people-list.scss';
 
 export interface IEmployee {
 	_id: string;
@@ -12,6 +13,9 @@ export interface IEmployee {
 
 interface IPeopleListState {
 	employees: IEmployee[];
+  letterColors: {
+    [s: string]: string;
+  };
 }
 
 export class PeopleList extends React.Component<{}, IPeopleListState> {
@@ -19,7 +23,10 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 
 	constructor(props: object) {
 		super(props);
-		this.state = { employees: [] };
+		this.state = {
+			employees: [],
+      letterColors: {},
+		 };
 		axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
 			const users: IEmployee[] = res.data;
 			this.setState({ employees: users });
@@ -68,11 +75,32 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 			});
 	}
 
+	public colorChange(letterKey: string) {
+		let newClass = 'blue';
+		console.log(this);
+		if (this.state.letterColors[letterKey] === 'blue') {
+			newClass = 'tomato';
+		}
+		this.setState({
+      letterColors: {
+        ...this.state.letterColors,
+        [letterKey]: newClass,
+      },
+    });
+	}
+
 	public render(): JSX.Element {
+
 		return (
 			<div>
 				{this.letters.map((letter: string) => (
-					<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
+					<div key={letter}>
+						<Letter
+              letter={letter}
+              onChangeColor={this.colorChange.bind(this, letter)}
+              color={this.state.letterColors[letter]}
+              employees={this.filterNames(this.state.employees, letter)} />
+					</div>
 				))}
 			</div>
 		);

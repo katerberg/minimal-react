@@ -4,15 +4,17 @@ import { IEmployee } from './PeopleList';
 import { ProfileModal } from './ProfileModal';
 
 export interface ILetterProps {
+	color: string;
 	letter: string;
+  onChangeColor: () => void;
 	employees: IEmployee[];
 }
 
 export class Letter extends React.Component<ILetterProps, {}> {
 	public render(): JSX.Element {
 		return (
-			<Container>
-				<Row>
+			<Container className={this.props.color}>
+				<Row onClick={() => this.props.onChangeColor()}>
 					<Col>
 						<h1>{this.props.letter}</h1>
 					</Col>
