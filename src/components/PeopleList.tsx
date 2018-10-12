@@ -1,58 +1,31 @@
-import axios, { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import * as React from 'react';
 import { Container } from 'reactstrap';
 import { Letter } from './Letter';
+import { IEmployee } from './MainComponent';
 
-export interface IEmployee {
-	_id: string;
-	email: string;
-	name: string;
-	phone: string;
-}
-
-interface IPeopleListState {
+interface IPeopleListProps {
 	employees: IEmployee[];
+	letters: string[];
 }
 
-export class PeopleList extends React.Component<{}, IPeopleListState> {
-	private letters: string[];
+export class PeopleList extends React.Component<IPeopleListProps, {}> {
+	public state: IPeopleListProps;
 
-	constructor(props: object) {
+	constructor(props: IPeopleListProps) {
 		super(props);
-		this.state = { employees: [] };
-		axios.get(`http://localhost:3000/api/database/employees`).then((res: AxiosResponse) => {
-			const users: IEmployee[] = res.data;
-			this.setState({ employees: users });
-		});
+		this.state = {
+			employees: this.props.employees,
+			letters: this.props.letters,
+		};
+	}
 
-		this.letters = [
-			'A',
-			'B',
-			'C',
-			'D',
-			'E',
-			'F',
-			'G',
-			'H',
-			'I',
-			'J',
-			'K',
-			'L',
-			'M',
-			'N',
-			'O',
-			'P',
-			'Q',
-			'R',
-			'S',
-			'T',
-			'U',
-			'V',
-			'W',
-			'X',
-			'Y',
-			'Z',
-		];
+	public componentWillReceiveProps(nextProps: IPeopleListProps): void {
+		if (nextProps.employees !== this.props.employees) {
+			this.setState({ employees: nextProps.employees });
+		}
+		if (nextProps.letters !== this.props.letters) {
+			this.setState({ letters: nextProps.letters });
+		}
 	}
 
 	public filterNames(employees: IEmployee[], letter: string): IEmployee[] {
@@ -71,7 +44,7 @@ export class PeopleList extends React.Component<{}, IPeopleListState> {
 	public render(): JSX.Element {
 		return (
 			<div>
-				{this.letters.map((letter: string) => (
+				{this.state.letters.map((letter: string) => (
 					<Letter key={letter} letter={letter} employees={this.filterNames(this.state.employees, letter)} />
 				))}
 			</div>

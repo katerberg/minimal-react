@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Col, Container, ListGroup, Row } from 'reactstrap';
 import './Letter.scss';
-import { IEmployee } from './PeopleList';
+import { IEmployee } from './MainComponent';
 import { ProfileModal } from './ProfileModal';
 
 export interface ILetterProps {
